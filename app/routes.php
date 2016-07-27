@@ -36,6 +36,7 @@ $app->get('/code', 'App\Controllers\HomeController:code');
 $app->get('/tos', 'App\Controllers\HomeController:tos');
 $app->get('/debug', 'App\Controllers\HomeController:debug');
 $app->post('/debug', 'App\Controllers\HomeController:postDebug');
+$app->get('/download', 'App\Controllers\HomeController:download');
 
 // User Center
 $app->group('/user', function () {

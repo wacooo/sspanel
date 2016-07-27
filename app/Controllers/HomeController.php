@@ -64,4 +64,10 @@ class HomeController extends BaseController
         return $this->echoJson($response, $res);
     }
 
+    public function download()
+    {
+        $homeIndexMsg = DbConfig::get('home-download');
+        return $this->view()->assign('homeIndexMsg', $homeIndexMsg)->display('download.tpl');
+    }
+
 }
