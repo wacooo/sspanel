@@ -39,6 +39,12 @@ class File extends Cache
 
     public function get($key)
     {
+    	if ($key == null || $key == "") {
+    		return null;
+    	}
+    	if (!file_exists($this->getFilePath($key))) {
+    		return null;
+    	}
         try{
             $content = file_get_contents($this->getFilePath($key));
         }catch (\Exception $e){

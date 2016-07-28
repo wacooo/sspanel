@@ -39,10 +39,10 @@
             <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
         </div>
 
-        <div class="form-group has-feedback">
+<!--        <div class="form-group has-feedback">
             <input type="text" id="code" value="{$code}" class="form-control" placeholder="邀请码"/>
             <span class="glyphicon glyphicon-send form-control-feedback"></span>
-        </div>
+        </div> -->
 
         <div class="form-group has-feedback">
             <p>注册即代表同意<a href="/tos">服务条款</a></p>
@@ -98,7 +98,8 @@
                     name: $("#name").val(),
                     passwd: $("#passwd").val(),
                     repasswd: $("#repasswd").val(),
-                    code: $("#code").val(),
+                    // code: $("#code").val(),
+                    code: 0,
                     verifycode: $("#verifycode").val(),
                     agree: $("#agree").val()
                 },
@@ -107,7 +108,8 @@
                         $("#msg-error").hide(10);
                         $("#msg-success").show(100);
                         $("#msg-success-p").html(data.msg);
-                        window.setTimeout("location.href='/auth/login'", 2000);
+                        // window.setTimeout("location.href='/auth/login'", 2000);
+                        window.setTimeout("location.href='/user'", 2000);
                     } else {
                         $("#msg-success").hide(10);
                         $("#msg-error").show(100);

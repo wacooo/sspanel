@@ -99,13 +99,13 @@ class AuthController extends BaseController
         $verifycode = $request->getParam('verifycode');
 
         // check code
-        $c = InviteCode::where('code', $code)->first();
-        if ($c == null) {
-            $res['ret'] = 0;
-            $res['error_code'] = self::WrongCode;
-            $res['msg'] = "邀请码无效";
-            return $this->echoJson($response, $res);
-        }
+//         $c = InviteCode::where('code', $code)->first();
+//         if ($c == null) {
+//             $res['ret'] = 0;
+//             $res['error_code'] = self::WrongCode;
+//             $res['msg'] = "邀请码无效";
+//             return $this->echoJson($response, $res);
+//         }
 
         // check email format
         if (!Check::isEmailLegal($email)) {
@@ -162,18 +162,25 @@ class AuthController extends BaseController
         $user->pass = Hash::passwordHash($passwd);
         $user->passwd = Tools::genRandomChar(6);
         $user->port = Tools::getLastPort() + 1;
+        $user->method = "aes-256-cfb";
         $user->t = 0;
         $user->u = 0;
         $user->d = 0;
-        $user->transfer_enable = Tools::toGB(Config::get('defaultTraffic'));
+        $user->transfer_enable = Tools::toMB(Config::get('defaultTraffic'));
         $user->invite_num = Config::get('inviteNum');
         $user->reg_ip = Http::getClientIP();
-        $user->ref_by = $c->user_id;
+//         $user->ref_by = $c->user_id;
 
         if ($user->save()) {
             $res['ret'] = 1;
             $res['msg'] = "注册成功";
-            $c->delete();
+            
+            // Auto Login
+            $time = 3600 * 24;
+            Logger::info("login user $user->id ");
+            Auth::login($user->id, $time);
+            
+//             $c->delete();
             return $this->echoJson($response, $res);
         }
         $res['ret'] = 0;

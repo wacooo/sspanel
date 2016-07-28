@@ -73,7 +73,7 @@ class XCat
             $user->t = 0;
             $user->u = 0;
             $user->d = 0;
-            $user->transfer_enable = Tools::toGB(Config::get('defaultTraffic'));
+            $user->transfer_enable = Tools::toMB(Config::get('defaultTraffic'));
             $user->invite_num = Config::get('inviteNum');
             $user->ref_by = 0;
             $user->is_admin = 1;

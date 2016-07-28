@@ -157,3 +157,11 @@ CREATE TABLE `ss_checkin_log` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
+DROP TABLE IF EXISTS `sp_email_verify`;
+CREATE TABLE `sp_email_verify` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(32) NOT NULL,
+  `token` varchar(64) NOT NULL,
+  `expire_at` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

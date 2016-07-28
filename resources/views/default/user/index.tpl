@@ -2,18 +2,45 @@
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
+
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            用户中心
-            <small>User Center</small>
+            我的信息
         </h1>
     </section>
 
     <!-- Main content -->
     <section class="content">
-        <!-- START PROGRESS BARS -->
+    
         <div class="row">
+            <!-- left column -->
+            <div class="col-md-6">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <div class="box-header">
+                        <i class="fa fa-user"></i>
+
+                        <h3 class="box-title">我的帐号</h3>
+                    </div>
+                    <div class="box-body">
+                        <dl class="dl-horizontal">
+                            <dt>用户名</dt>
+                            <dd>{$user->user_name}</dd>
+                            <dt>邮箱</dt>
+                            <dd>{$user->email}</dd>
+                        </dl>
+
+                    </div>
+                    <!--
+                    <div class="box-footer">
+                        <a class="btn btn-danger btn-sm" href="kill">删除我的账户</a>
+                    </div>
+                    -->
+                    <!-- /.box -->
+                </div>
+            </div>
+            
             <div class="col-md-6">
                 <div class="box box-primary">
                     <div class="box-header">
@@ -30,6 +57,10 @@
                 <!-- /.box -->
             </div>
             <!-- /.col (right) -->
+        </div>
+        
+        <!-- START PROGRESS BARS -->
+        <div class="row">
 
             <div class="col-md-6">
                 <div class="box box-primary">
@@ -69,33 +100,6 @@
             <div class="col-md-6">
                 <div class="box box-primary">
                     <div class="box-header">
-                        <i class="fa fa-pencil"></i>
-
-                        <h3 class="box-title">签到获取流量</h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <p> 每{$config['checkinTime']}小时可以签到一次。</p>
-
-                        <p>上次签到时间：<code>{$user->lastCheckInTime()}</code></p>
-                        {if $user->isAbleToCheckin() }
-                            <p id="checkin-btn">
-                                <button id="checkin" class="btn btn-success  btn-flat">签到</button>
-                            </p>
-                        {else}
-                            <p><a class="btn btn-success btn-flat disabled" href="#">不能签到</a></p>
-                        {/if}
-                        <p id="checkin-msg"></p>
-                    </div>
-                    <!-- /.box-body -->
-                </div>
-                <!-- /.box -->
-            </div>
-            <!-- /.col (right) -->
-
-            <div class="col-md-6">
-                <div class="box box-primary">
-                    <div class="box-header">
                         <i class="fa  fa-paper-plane"></i>
 
                         <h3 class="box-title">连接信息</h3>
@@ -123,6 +127,30 @@
     </section>
     <!-- /.content -->
 </div><!-- /.content-wrapper -->
+
+<!--         <div class="col-md-6">
+                <div class="box box-primary">
+                    <div class="box-header">
+                        <i class="fa fa-pencil"></i>
+                        <h3 class="box-title">签到获取流量</h3>
+                    </div>
+                    
+                    <div class="box-body">
+                        <p> 每{$config['checkinTime']}小时可以签到一次。</p>
+
+                        <p>上次签到时间：<code>{$user->lastCheckInTime()}</code></p>
+                        {if $user->isAbleToCheckin() }
+                            <p id="checkin-btn">
+                                <button id="checkin" class="btn btn-success  btn-flat">签到</button>
+                            </p>
+                        {else}
+                            <p><a class="btn btn-success btn-flat disabled" href="#">不能签到</a></p>
+                        {/if}
+                        <p id="checkin-msg"></p>
+                    </div>                    
+                </div>                
+            </div>
+-->
 
 <script>
     $(document).ready(function () {

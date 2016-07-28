@@ -44,11 +44,11 @@ class Auth
      */
     public static function getUser()
     {
-        if (Helper::isTesting()) {
-            $user = User::first();
-            $user->isLogin = true;
-            return $user;
-        }
+//         if (Helper::isTesting()) {
+//             $user = User::first();
+//             $user->isLogin = true;
+//             return $user;
+//         }
         $sid = Cookie::get('sid');
         $value = self::getCache()->get($sid);
         if ($value == null || !$value) {
