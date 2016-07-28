@@ -9,7 +9,9 @@
         </div>
         {if $user->isLogin}
             <div class="row center">
-                <a href="/user" id="download-button" class="btn-large waves-effect waves-light orange">进入用户中心</a>
+                <a href="/user" id="download-button" class="btn-large waves-effect waves-light orange col s4 offset-s3">进入用户中心</a>
+                <div class="col s2" style="">
+                  <a target="_blank" href="http://sighttp.qq.com/authd?IDKEY=bdfa6222a079d132d978a3d332bc1a2cb594ce046fa52229"><img border="0" src="http://wpa.qq.com/imgd?IDKEY=bdfa6222a079d132d978a3d332bc1a2cb594ce046fa52229&amp;pic=51" alt="点击这里给我发消息" title="点击这里给我发消息"></a>
             </div>
         {else}
         <div class="row center">
@@ -29,10 +31,10 @@
             <div class="col s12 m4">
                 <div class="icon-block">
                     <h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2>
-                    <h5 class="center">Super Fast</h5>
+                    <h5 class="center">最快速</h5>
 
                     <p class="light">
-                        Bleeding edge techniques using Asynchronous I/O and Event-driven programming.
+                        采用基于异步I/O和事件驱动的最前沿技术，给每个接入用户不同以往的畅快体验。。
                     </p>
                 </div>
             </div>
@@ -40,10 +42,10 @@
             <div class="col s12 m4">
                 <div class="icon-block">
                     <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
-                    <h5 class="center">Open Source</h5>
+                    <h5 class="center">最安全</h5>
 
                     <p class="light">
-                        Totally free and open source. A worldwide community devoted to deliver bug-free code and long-term support.
+                        拥有全球顶级的技术社区服务和长期稳定的技术支持，保证用户身份安全、终端/数据安全、传输安全、应用权限安全和审计安全。
                     </p>
                 </div>
             </div>
@@ -51,10 +53,10 @@
             <div class="col s12 m4">
                 <div class="icon-block">
                     <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
-                    <h5 class="center">Easy to work with</h5>
+                    <h5 class="center">最全面</h5>
 
                     <p class="light">
-                        Avaliable on multiple platforms, including PC, MAC, Mobile (Android and iOS) and Routers (OpenWRT).
+                        全面支持Windows、MAC、Linux、手机安卓、手机苹果等主流操作系统，同时支持路由器(OpenWRT)使用。管理容易，使用方便。
                     </p>
                 </div>
             </div>
