@@ -18,9 +18,9 @@ function routine($text) {
 // $package = VpnPackage::createNewPackage(12, 50000, 10, $now, $end);
 // VpnPackage::preparePackage($package->id);
 
-$p = VpnPackage::findPackage(34);
-$pe = VpnPackage::createExtendedPackage($p, 3600);
-VpnPackage::preparePackage($pe->id);
+// $p = VpnPackage::findPackage(34);
+// $pe = VpnPackage::createExtendedPackage($p, 3600);
+// VpnPackage::preparePackage($pe->id);
 
 
 function packageRoutine(){
