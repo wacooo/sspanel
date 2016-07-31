@@ -37,6 +37,7 @@ $app->get('/tos', 'App\Controllers\HomeController:tos');
 $app->get('/debug', 'App\Controllers\HomeController:debug');
 $app->post('/debug', 'App\Controllers\HomeController:postDebug');
 $app->get('/download', 'App\Controllers\HomeController:download');
+$app->get('/buy', 'App\Controllers\HomeController:buy');
 
 // User Center
 $app->group('/user', function () {
@@ -138,11 +139,19 @@ $app->group('/mu/v2', function () {
     $this->post('/nodes/{id}/traffic', 'App\Controllers\MuV2\NodeController:postTraffic');
 })->add(new Mu());
 
+// package
+$app->group('/package', function () {
+	$this->post('/add', 'App\Controllers\PackageController:add');
+	$this->post('/paycheck', 'App\Controllers\PackageController:payedCheck');
+	$this->post('/extend', 'App\Controllers\PackageController:extend');
+})->add(new Auth());
+
 // res
 $app->group('/res', function () {
     $this->get('/captcha/{id}', 'App\Controllers\ResController:captcha');
 });
 
 return $app;
+
 
 

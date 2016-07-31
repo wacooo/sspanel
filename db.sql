@@ -165,3 +165,21 @@ CREATE TABLE `sp_email_verify` (
   `expire_at` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `vpn_package`;
+CREATE TABLE `vpn_package` (
+  `id` int(11) PRIMARY KEY AUTO_INCREMENT,
+  `amount` bigint(20) NOT NULL,
+  `uid` int(11) NOT NULL,
+  `start_time` INTEGER UNSIGNED NULL DEFAULT NULL,
+  `end_time` INTEGER UNSIGNED NULL DEFAULT NULL,
+  `reset_interval` int(11) NOT NULL,
+  `next_reset_time` INTEGER UNSIGNED NULL DEFAULT NULL,
+  `status` tinyint(8) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+create index `IDX_PACKAGE_UID` on vpn_package(`uid`);
+create index `IDX_PACKAGE_START` on vpn_package(`start_time`);
+create index `IDX_PACKAGE_END` on vpn_package(`end_time`);
+create index `IDX_PACKAGE_NEXT_RESET` on vpn_package(`next_reset_time`);
+create index `IDX_PACKAGE_STATUS` on vpn_package(`status`);

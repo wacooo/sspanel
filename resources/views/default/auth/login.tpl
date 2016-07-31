@@ -2,7 +2,7 @@
 <body class="login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="#"><b>{$config['appName']}</b></a>
+        <a href="/"><b>{$config['appName']}</b></a>
     </div><!-- /.login-logo -->
     <div class="login-box-body">
         <p class="login-box-msg">登录到用户中心</p>

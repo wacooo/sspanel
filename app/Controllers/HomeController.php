@@ -69,5 +69,11 @@ class HomeController extends BaseController
         $homeIndexMsg = DbConfig::get('home-download');
         return $this->view()->assign('homeIndexMsg', $homeIndexMsg)->display('download.tpl');
     }
+    
+    public function buy()
+    {
+    	$homeIndexMsg = DbConfig::get('home-download');
+    	return $this->view()->assign('homeIndexMsg', $homeIndexMsg)->display('buy.tpl');
+    }
 
 }

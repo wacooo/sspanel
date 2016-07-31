@@ -11,6 +11,7 @@ use App\Services\Config;
 use App\Services\DbConfig;
 use App\Utils\Hash;
 use App\Utils\Tools;
+use App\Services\VpnPackage\VpnPackage;
 
 
 /**
@@ -38,7 +39,9 @@ class UserController extends BaseController
         if ($msg == null) {
             $msg = "在后台修改用户中心公告...";
         }
-        return $this->view()->assign('msg', $msg)->display('user/index.tpl');
+        $nodes = Node::all();
+        $p = VpnPackage::findUsingPackageForUser($this->user->id);
+        return $this->view()->assign('msg', $msg)->assign('nodes', $nodes)->assign('package', $p)->display('user/index.tpl');
     }
 
     public function node($request, $response, $args)

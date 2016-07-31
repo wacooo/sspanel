@@ -46,7 +46,7 @@
                     <div class="box-header">
                         <i class="fa fa-bullhorn"></i>
 
-                        <h3 class="box-title">公告&FAQ</h3>
+                        <h3 class="box-title">公告</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -61,13 +61,11 @@
         
         <!-- START PROGRESS BARS -->
         <div class="row">
-
             <div class="col-md-6">
                 <div class="box box-primary">
                     <div class="box-header">
                         <i class="fa fa-exchange"></i>
-
-                        <h3 class="box-title">流量使用情况</h3>
+                        <h3 class="box-title">套餐使用情况</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -83,8 +81,12 @@
                             </div>
                         </div>
                         <dl class="dl-horizontal">
-                            <dt>总流量</dt>
-                            <dd>{$user->enableTraffic()}</dd>
+                            <dt>到期时间</dt>
+                            <dd>{$package->getEndTime()}</dd>
+                            <dt>每月流量</dt>
+                            <dd>{$package->getAmount()}</dd>
+                            <dt>下次重置</dt>
+                            <dd>{$package->nextResetTime()}</dd>
                             <dt>已用流量</dt>
                             <dd>{$user->usedTraffic()}</dd>
                             <dt>剩余流量</dt>
@@ -113,8 +115,9 @@
                             <dd>{$user->passwd}</dd>
                             <dt>自定义加密方式</dt>
                             <dd>{$user->method}</dd>
-                            <dt>上次使用</dt>
+                            <!--<dt>上次使用</dt>
                             <dd>{$user->lastSsTime()}</dd>
+                            -->
                         </dl>
                     </div>
                     <!-- /.box-body -->
@@ -124,6 +127,40 @@
             <!-- /.col (right) -->
         </div>
         <!-- /.row --><!-- END PROGRESS BARS -->
+        
+        
+        
+        <div class="row">
+        	<div class="col-md-12">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <i class="fa  fa-paper-plane"></i>
+                        <h3 class="box-title">可用地址</h3>
+                    </div>
+                    <div class="box-body">
+                    	
+                    	<div class="table-responsive">
+			                <table class="table no-margin">
+            			      <thead>
+                  				<tr>
+                    	    		<th>位置</th>
+                    	    		<th>服务器地址</th>
+                  				</tr>
+                  			  </thead>
+                  			  <tbody>                  			  
+                  			  {foreach $nodes as $node}
+                  				<tr>
+                    	    	    <td>{$node->name}</td>
+                    	    	    <td>{$node->server}</td>
+                  				</tr>                  				
+                  			  {/foreach}
+                  			  </tbody>
+                			</table>
+              			</div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.row -->
     </section>
     <!-- /.content -->
 </div><!-- /.content-wrapper -->
