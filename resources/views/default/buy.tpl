@@ -33,7 +33,8 @@
 		
 	<div class="row">
 		<div class="col s4 m5"><p/>
-			<h5>已优惠<span id="discount" class="red-text">0元</span></h5>			
+			<h5>已优惠<span id="discount" class="red-text">0元</span></h5>
+			<h6 class="red-text">满6个月送1个月，满1年送2个月</h6>			
 		</div>
 		 <div class="col s4 m1">
 			<p>
@@ -127,16 +128,19 @@ $(document).ready(function(){
 		
 		// x<=100 z= (0.2x+8)* f(y)
 		// x> =100 z =(0.1x+18) * f(y)
-		var fy = Math.floor(1 + 0.8 * y);
 		var z = 0;
+		var o = 0;
+		var fy = y - Math.floor(y/6);
 		if (x <= 100) {
 			z = (0.2*x+8) * fy;
+			o = (0.2*x+8) * y;
 		}else {
 			z = (0.1*x+18)*fy;
+			o = (0.1*x+18) * y;
 		}
 		z = round(z).toFixed(1);
 		var highp = (0.3*x + 8)*y;
-		var discount = round(highp - z);		
+		var discount = round(o - z);		
 		$("#discount").text(discount+"元");
 		displayPrice(z);
 	}
@@ -172,3 +176,4 @@ $(document).ready(function(){
 });
 
 </script>   
+
