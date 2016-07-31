@@ -81,12 +81,14 @@
                             </div>
                         </div>
                         <dl class="dl-horizontal">
+                        {if $package != NULL}
                             <dt>到期时间</dt>
                             <dd>{$package->getEndTime()}</dd>
                             <dt>每月流量</dt>
                             <dd>{$package->getAmount()}</dd>
                             <dt>下次重置</dt>
                             <dd>{$package->nextResetTime()}</dd>
+                        {/if}
                             <dt>已用流量</dt>
                             <dd>{$user->usedTraffic()}</dd>
                             <dt>剩余流量</dt>

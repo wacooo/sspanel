@@ -139,8 +139,6 @@ $(document).ready(function(){
 		var discount = round(highp - z);		
 		$("#discount").text(discount+"元");
 		displayPrice(z);
-		console.log(z);
-		console.log(discount);
 	}
 	
 	$("#buynow").click(function(){

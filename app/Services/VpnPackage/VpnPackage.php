@@ -9,7 +9,8 @@ class VpnPackage {
 	
 	public static function findUsingPackageForUser($uid) {
 		$p = Package::where('uid', $uid)->where('status', 2);
-		return $p->firstOrFail();
+		return $p->first();
+
 	}
 	
 	public static function findPackage($pid) {
