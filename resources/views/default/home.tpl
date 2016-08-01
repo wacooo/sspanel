@@ -154,7 +154,7 @@
                     <a id="client1" target="_blank" href="">
                         <p style="margin-bottom: 0px;">QQ客服1&nbsp;</p>
                     </a>
-                    <a id="client2" target="_blank" href="http://sighttp.qq.com/authd?IDKEY=2f4a019f109ae308493ce394574ed928596ef60135159d63">
+                    <a id="client2" target="_blank" href="">
                         <p>QQ客服2&nbsp;</p>
                     </a>
                 </div>
@@ -206,7 +206,7 @@
         client2 = '#client1';
     }
     $(client1).attr('href', 'http://sighttp.qq.com/authd?IDKEY=99eb368f41d120f099d93ca3e575a50831aba3f53878ee7a');
-    $(client2).attr('href', 'http://sighttp.qq.com/authd?IDKEY=99eb368f41d120f099d93ca3e575a50831aba3f53878ee7a');
+    $(client2).attr('href', 'http://sighttp.qq.com/authd?IDKEY=2f4a019f109ae308493ce394574ed928596ef60135159d63');
 
 })(jQuery); // End of use strict
 
