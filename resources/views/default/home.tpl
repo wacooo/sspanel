@@ -13,6 +13,9 @@
     <!-- Custom Fonts -->
     <link href="http://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    <link href="http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+    <link href="http://fonts.useso.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic" rel="stylesheet" type="text/css">
+
     <link href="/assets/public/css/home.min.css" rel="stylesheet" type="text/css"/>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -132,11 +135,8 @@
         <div class="container text-center">
             <div class="call-to-action">
                 <h2>如何试用</h2>
-                <p>请发邮件至holliability@gmail.com申请免费试用
-12小时内回复试用帐号信息
-试用时间3天，流量限制1G
-本服务仅供科学研究和资料查询,禁止下载盗版视频
-禁止一切违反中国法律的用途</p>
+                <p>新注册用户将有1小时50M的免费流量可用，如果需要更多流量试用，请联系客服。</p>
+                <p>本服务仅供科学研究和资料查询，禁止下载盗版视频，禁止一切违反中国法律的用途。</p>
             </div>
         </div>
     </aside>
@@ -147,12 +147,15 @@
                 <div class="col-lg-8 col-lg-offset-2 text-center">
                     <h2 class="section-heading">联系购买</h2>
                     <hr class="primary">
-                    <p>如果试用满意需要购买,请支付宝或者Paypal转账至xxx@gmail.com。 付款完成后将交易号邮件发送过来，我们将在收到款项后尽快发送开通邮件至您的邮箱。 工作时间一般半小时，晚上和周末稍微长一点</p>
+                    <p>如果试用满意需要购买, 可以通过购买页面定制您的套餐。付款成功后联系QQ客服开通，或者将付款截图邮件发送到xxxx@gmail.com。我们将在收到款项后尽快开通您的套餐。</p>
                 </div>
                 <div class="col-lg-4 col-lg-offset-2 text-center">
                     <i class="fa fa-qq fa-3x sr-contact"></i>
-                    <a target="_blank" href="http://sighttp.qq.com/authd?IDKEY=bdfa6222a079d132d978a3d332bc1a2cb594ce046fa52229">
-                        <p>QQ在线客服</p>
+                    <a id="client1" target="_blank" href="">
+                        <p style="margin-bottom: 0px;">QQ客服1&nbsp;</p>
+                    </a>
+                    <a id="client2" target="_blank" href="http://sighttp.qq.com/authd?IDKEY=2f4a019f109ae308493ce394574ed928596ef60135159d63">
+                        <p>QQ客服2&nbsp;</p>
                     </a>
                 </div>
                 <div class="col-lg-4 text-center">
@@ -195,6 +198,15 @@
             top: 100
         }
     })
+
+    var client1 = '#client1';
+    var client2 = '#client2';
+    if (Math.random() < 0.5) {
+        client1 = '#client2';
+        client2 = '#client1';
+    }
+    $(client1).attr('href', 'http://sighttp.qq.com/authd?IDKEY=99eb368f41d120f099d93ca3e575a50831aba3f53878ee7a');
+    $(client2).attr('href', 'http://sighttp.qq.com/authd?IDKEY=99eb368f41d120f099d93ca3e575a50831aba3f53878ee7a');
 
 })(jQuery); // End of use strict
 
