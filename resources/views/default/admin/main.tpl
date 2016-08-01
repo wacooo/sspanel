@@ -118,6 +118,12 @@
                 </li>
 
                 <li>
+                    <a href="/admin/package">
+                        <i class="fa fa-user"></i> <span>套餐管理</span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="/admin/invite">
                         <i class="fa fa-users"></i> <span>邀请管理</span>
                     </a>

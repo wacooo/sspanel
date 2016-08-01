@@ -8,6 +8,8 @@ use App\Models\TrafficLog;
 use App\Services\Analytics;
 use App\Services\DbConfig;
 use App\Utils\Tools;
+use App\Models\Package;
+use App\Services\VpnPackage\VpnPackage;
 
 /**
  *  Admin Controller
@@ -20,7 +22,7 @@ class AdminController extends UserController
         $sts = new Analytics();
         return $this->view()->assign('sts', $sts)->display('admin/index.tpl');
     }
-
+    
     public function invite($request, $response, $args)
     {
         $codes = InviteCode::where('user_id', '=', '0')->get();
@@ -69,7 +71,31 @@ class AdminController extends UserController
         $logs->setPath('/admin/trafficlog');
         return $this->view()->assign('logs', $logs)->display('admin/trafficlog.tpl');
     }
-
+    
+    public function packageList($request, $response, $args){
+    	$packages = Package::all();
+    	return $this->view()->assign('packages', $packages)->display('admin/package.tpl');
+    }
+    
+    public function packageEnable($request, $response, $args){
+    	$pid = $args['id'];
+    	$p = VpnPackage::findPackage($pid);
+    	if ($p != NULL) {
+    		$p->status = 1;
+    		$p->save();
+    	}
+    	return $this->redirect($response, "/admin/package");
+    }
+    
+    public function packageDelete($request, $response, $args){
+    	$pid = $args['id'];
+    	$p = VpnPackage::findPackage($pid);
+    	if ($p != NULL) {
+    		$p->delete();
+    	}
+    	return $this->redirect($response, "/admin/package");
+    }    
+    
     public function config($request, $response, $args)
     {
         $conf = [

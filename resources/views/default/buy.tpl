@@ -159,7 +159,8 @@ $(document).ready(function(){
 					if (res.ret == 0) {
 						alert(res.msg);
 					}else {
-						window.location = "/user";
+						var pid = res['pid'];
+						window.location = "/pay?pid=" + pid;
 					}
 				}catch(e) {
 					console.log(e.message);

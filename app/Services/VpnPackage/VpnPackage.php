@@ -15,7 +15,7 @@ class VpnPackage {
 	
 	public static function findPackage($pid) {
 		$p = Package::where('id', $pid);
-		return $p->firstOrFail();
+		return $p->first();
 	}
 	
 	public static function createExtendedPackage($originpackage, $secondsToExtend){
@@ -27,6 +27,21 @@ class VpnPackage {
 		$package->status = 0;
 		$package->save();
 		return $package;
+	}
+	
+	public static function computePrice($package) {
+		$month = ($package->end_time - $package->start_time) / 3600 / 24 / 31;
+		$x = $package->amount;
+		$x = $x / 1024 / 1024 / 1024;
+		$y = round($month);
+		$fy = $y - floor($y/6);
+		$z = 0;			
+		if ($x <= 100) {
+			$z= (0.2 * $x + 8)* $fy;
+		}else{
+			$z = (0.1 * $x + 18) * $y;
+		}
+		return $z;
 	}
 	
 	public static function createNewPackage($uid, $amount, $resetInterval, $startTime, $endTime){

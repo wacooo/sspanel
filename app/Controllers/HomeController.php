@@ -14,6 +14,8 @@ use App\Services\DbConfig;
 use App\Services\Logger;
 use App\Utils\Check;
 use App\Utils\Http;
+use App\Services\VpnPackage\VpnPackage;
+use App\Utils\Tools;
 
 /**
  *  HomeController
@@ -72,8 +74,22 @@ class HomeController extends BaseController
     
     public function buy()
     {
-    	$homeIndexMsg = DbConfig::get('home-download');
-    	return $this->view()->assign('homeIndexMsg', $homeIndexMsg)->display('buy.tpl');
+    	return $this->view()->display('buy.tpl');
     }
 
+    public function pay($request, $response, $args){
+    	$pid = $request->getParam('pid');
+    	if (empty($pid)) {
+    		return $this->redirect($response, "/");
+    	}
+    	$p = VpnPackage::findPackage($pid);
+    	if ($p == NULL || $p->status != 0) {
+    		return $this->redirect($response, "/");
+    	}
+    	$price = VpnPackage::computePrice($p);
+    	$amount = $p->amount;
+    	$month = round(($p->end_time - $p->start_time) / 24 / 3600 / 31);
+    	$desc = "购买".$month."个月,每月流量".Tools::flowAutoShow($amount);
+    	return $this->view()->assign("price",$price)->assign("pdesc", $desc)->display('pay.tpl');
+    }
 }

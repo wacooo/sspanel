@@ -38,6 +38,7 @@ $app->get('/debug', 'App\Controllers\HomeController:debug');
 $app->post('/debug', 'App\Controllers\HomeController:postDebug');
 $app->get('/download', 'App\Controllers\HomeController:download');
 $app->get('/buy', 'App\Controllers\HomeController:buy');
+$app->get('/pay', 'App\Controllers\HomeController:pay');
 
 // User Center
 $app->group('/user', function () {
@@ -84,6 +85,12 @@ $app->group('/admin', function () {
     $this->get('/', 'App\Controllers\AdminController:index');
     $this->get('/trafficlog', 'App\Controllers\AdminController:trafficLog');
     $this->get('/checkinlog', 'App\Controllers\AdminController:checkinLog');
+    
+    // package
+    $this->get('/package', 'App\Controllers\AdminController:packageList');
+    $this->get('/package/{id}/enable', 'App\Controllers\AdminController:packageEnable');
+    $this->get('/package/{id}/delete', 'App\Controllers\AdminController:packageDelete');
+    
     // app config
     $this->get('/config', 'App\Controllers\AdminController:config');
     $this->put('/config', 'App\Controllers\AdminController:updateConfig');

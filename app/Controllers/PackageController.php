@@ -33,21 +33,21 @@ class PackageController extends BaseController {
 		$endTime = $startTime + $month*31*24*3600;
 		$p = VpnPackage::createNewPackage($user->id, $amount*1024*1024*1024, 3600*24*31, $startTime, $endTime);
 		$rs['msg'] = "创建新套餐成功";
+		$rs['pid'] = $p->id;
 		$rs['ret'] = 1;
-		
-		// XXX: For Testing
-		VpnPackage::preparePackage($p->id);
-		
+
 		return $response->getBody()->write(json_encode($rs));
 	}
 	
 	public function payedCheck($request, $response, $args){
+		
+		$pid = $request->getParam("pid");
+		
 		$rs['ret'] = 0;
-		if (!isset($args["pid"])) {
+		if (empty($pid)) {
 			$rs['msg'] = "参数不全";
 			return $response->getBody()->write(json_encode($rs));
 		}
-		$pid = $args['pid'];
 		
 		// TODO: do pay check		
 		VpnPackage::preparePackage($pid);
@@ -80,10 +80,8 @@ class PackageController extends BaseController {
 		}
 		$ep = VpnPackage::createExtendedPackage($p, $month*31*24*3600);
 		$rs['msg'] = "续约套餐成功";
+		$rs['pid'] = $p->id;
 		$rs['ret'] = 1;
-		
-		// XXX: For Testing
-		VpnPackage::preparePackage($ep->id);
 		
 		return $response->getBody()->write(json_encode($rs));
 	}
