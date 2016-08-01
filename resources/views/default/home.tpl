@@ -150,12 +150,14 @@
                     <p>如果试用满意需要购买,请支付宝或者Paypal转账至xxx@gmail.com。 付款完成后将交易号邮件发送过来，我们将在收到款项后尽快发送开通邮件至您的邮箱。 工作时间一般半小时，晚上和周末稍微长一点</p>
                 </div>
                 <div class="col-lg-4 col-lg-offset-2 text-center">
-                    <i class="fa fa-phone fa-3x sr-contact"></i>
-                    <p>123-456-6789</p>
+                    <i class="fa fa-qq fa-3x sr-contact"></i>
+                    <a target="_blank" href="http://sighttp.qq.com/authd?IDKEY=bdfa6222a079d132d978a3d332bc1a2cb594ce046fa52229">
+                        <p>QQ在线客服</p>
+                    </a>
                 </div>
                 <div class="col-lg-4 text-center">
-                    <i class="fa fa-envelope-o fa-3x sr-contact"></i>
-                    <p><a href="mailto:your-email@your-domain.com">123@456.com</a></p>
+                    <i class="fa fa-shopping-cart fa-3x sr-contact"></i>
+                    <p><a href="/buy">点击即刻购买</a></p>
                 </div>
             </div>
         </div>
@@ -193,23 +195,6 @@
             top: 100
         }
     })
-
-    // Initialize and Configure Scroll Reveal Animation
-    window.sr = ScrollReveal();
-    sr.reveal('.sr-icons', {
-        duration: 600,
-        scale: 0.3,
-        distance: '0px'
-    }, 200);
-    sr.reveal('.sr-button', {
-        duration: 1000,
-        delay: 200
-    });
-    sr.reveal('.sr-contact', {
-        duration: 600,
-        scale: 0.3,
-        distance: '0px'
-    }, 300);
 
 })(jQuery); // End of use strict
 
