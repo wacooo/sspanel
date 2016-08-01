@@ -40,6 +40,8 @@ $app->get('/download', 'App\Controllers\HomeController:download');
 $app->get('/buy', 'App\Controllers\HomeController:buy');
 $app->get('/pay', 'App\Controllers\HomeController:pay');
 
+$app->get('/home', 'App\Controllers\HomeController:home');
+
 // User Center
 $app->group('/user', function () {
     $this->get('', 'App\Controllers\UserController:index');

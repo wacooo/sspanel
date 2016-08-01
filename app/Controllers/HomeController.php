@@ -76,6 +76,11 @@ class HomeController extends BaseController
     {
     	return $this->view()->display('buy.tpl');
     }
+    public function index()
+    {
+        $homeIndexMsg = DbConfig::get('home-index');
+        return $this->view()->assign('homeIndexMsg', $homeIndexMsg)->display('home.tpl');
+    }
 
     public function pay($request, $response, $args){
     	$pid = $request->getParam('pid');
