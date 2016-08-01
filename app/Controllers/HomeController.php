@@ -76,7 +76,7 @@ class HomeController extends BaseController
     {
     	return $this->view()->display('buy.tpl');
     }
-    public function index()
+    public function home()
     {
         $homeIndexMsg = DbConfig::get('home-index');
         return $this->view()->assign('homeIndexMsg', $homeIndexMsg)->display('home.tpl');
