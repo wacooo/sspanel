@@ -32,7 +32,7 @@
 		    <ul class="we-create animated fadeInUp delay-1s">
 		    	<li>支持Shadowsocks，美国/日本/新加坡/台湾/香港/韩国精品服务线路。 手机电脑全平台支持，同时5终端，包年仅需58元。</li>
 		    </ul>
-		    <a class="link animated fadeInUp delay-1s" href="#">开始体验</a>
+		    <a class="link animated fadeInUp delay-1s" href="/auth/register">开始体验</a>
 		</div>
 	</header><!--header-end-->
 
@@ -157,52 +157,43 @@
 	<section class="main-section team" id="team"><!--main-section team-start-->
 		<div class="container">
 	        <h2>套餐选购</h2>
-	        <h6>Take a closer look into our amazing team. We won’t bite.</h6>
+	        <h6>新注册用户将有1小时50M的免费流量可用，欢迎选购适合您的套餐</h6>
 	        <div class="team-leader-block clearfix">
 	            <div class="team-leader-box">
-	                <div class="team-leader wow fadeInDown delay-03s"> 
-	                    <div class="team-leader-shadow"><a href="#"></a></div>
-	                    <img src="img/team-leader-pic1.jpg" alt="">
-	                    <ul>
-	                        <li><a href="#" class="fa-twitter"></a></li>
-	                        <li><a href="#" class="fa-facebook"></a></li>
-	                        <li><a href="#" class="fa-pinterest"></a></li>
-	                        <li><a href="#" class="fa-google-plus"></a></li>
-	                    </ul>
-	                </div>
-	                <h3 class="wow fadeInDown delay-03s">Walter White</h3>
-	                <span class="wow fadeInDown delay-03s">Chief Executive Officer</span>
-	                <p class="wow fadeInDown delay-03s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat sollicitudin cursus. Dolor sit amet, consectetur adipiscing elit proin consequat.</p>
+	            	<div class="team-bg" style="">
+	            		<h4 class="wow fadeInDown delay-03s">轻型套餐</h4>
+	            		<h3 class="wow fadeInDown delay-03s">10元/月</h3>
+	            		<h3 class="wow fadeInDown delay-03s">15G流量/月</h3>
+	            		<h3 class="wow fadeInDown delay-03s">美国/新加坡/日本等</h3>
+	            		<h3 class="wow fadeInDown delay-03s">同时支持5终端</h3>
+	            		<h3 class="wow fadeInDown delay-03s">半年35元</h3>
+	            		<h3 class="wow fadeInDown delay-03s">包年58元</h3>
+	            		<i class="fa fa-shopping-cart fa-3x wow fadeInDown delay-03s"></i>
+	            	</div>
 	            </div>
 	            <div class="team-leader-box">
-	                <div class="team-leader  wow fadeInDown delay-06s"> 
-	                    <div class="team-leader-shadow"><a href="#"></a></div>
-	                    <img src="img/team-leader-pic2.jpg" alt="">
-	                    <ul>
-	                        <li><a href="#" class="fa-twitter"></a></li>
-	                        <li><a href="#" class="fa-facebook"></a></li>
-	                        <li><a href="#" class="fa-pinterest"></a></li>
-	                        <li><a href="#" class="fa-google-plus"></a></li>
-	                    </ul>
-	                </div>
-	                <h3 class="wow fadeInDown delay-06s">Jesse Pinkman</h3>
-	                <span class="wow fadeInDown delay-06s">Product Manager</span>
-	                <p class="wow fadeInDown delay-06s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat sollicitudin cursus. Dolor sit amet, consectetur adipiscing elit proin consequat.</p>
+	                <div class="team-bg" style="">
+	            		<h4 class="wow fadeInDown delay-06s">普通套餐</h4>
+	            		<h3 class="wow fadeInDown delay-06s">15元/月</h3>
+	            		<h3 class="wow fadeInDown delay-06s">50G流量/月</h3>
+	            		<h3 class="wow fadeInDown delay-06s">美国/新加坡/日本等</h3>
+	            		<h3 class="wow fadeInDown delay-06s">同时支持5终端</h3>
+	            		<h3 class="wow fadeInDown delay-06s">半年45元</h3>
+	            		<h3 class="wow fadeInDown delay-06s">包年78元</h3>
+	            		<i class="fa fa-shopping-cart fa-3x wow fadeInDown delay-06s"></i>
+	            	</div>
 	            </div>
 	            <div class="team-leader-box">
-	                <div class="team-leader wow fadeInDown delay-09s"> 
-	                    <div class="team-leader-shadow"><a href="#"></a></div>
-	                    <img src="img/team-leader-pic3.jpg" alt="">
-	                    <ul>
-	                        <li><a href="#" class="fa-twitter"></a></li>
-	                        <li><a href="#" class="fa-facebook"></a></li>
-	                        <li><a href="#" class="fa-pinterest"></a></li>
-	                        <li><a href="#" class="fa-google-plus"></a></li>
-	                    </ul>
-	                </div>
-	                <h3 class="wow fadeInDown delay-09s">Skyler white</h3>
-	                <span class="wow fadeInDown delay-09s">Accountant</span>
-	                <p class="wow fadeInDown delay-09s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat sollicitudin cursus. Dolor sit amet, consectetur adipiscing elit proin consequat.</p>
+	                <div class="team-bg" style="">
+	            		<h4 class="wow fadeInDown delay-09s">高级套餐</h4>
+	            		<h3 class="wow fadeInDown delay-09s">20元/月</h3>
+	            		<h3 class="wow fadeInDown delay-09s">100G流量/月</h3>
+	            		<h3 class="wow fadeInDown delay-09s">美国/新加坡/日本等</h3>
+	            		<h3 class="wow fadeInDown delay-09s">同时支持5终端</h3>
+	            		<h3 class="wow fadeInDown delay-09s">半年60元</h3>
+	            		<h3 class="wow fadeInDown delay-09s">包年108元</h3>
+	            		<i class="fa fa-shopping-cart fa-3x wow fadeInDown delay-09s"></i>
+	            	</div>
 	            </div>
 	        </div>
 	    </div>
