@@ -44,8 +44,13 @@
 	            <li><a href="#team">教程</a></li>
 	            <li class="small-logo"><a href="#header"><img src="/assets/public/img/small-logo.png" alt=""></a></li>
 	            <li><a href="/download">客户端下载</a></li>
-	            <li><a href="/auth/login">登录</a></li>
-	            <li><a href="/auth/register">注册</a></li>
+	            {if $user->isLogin}
+	                <li><a href="/user">用户中心</a></li>
+	                <li><a href="/user/logout">退出</a></li>
+	            {else}
+	                <li><a href="/auth/login">登录</a></li>
+	                <li><a href="/auth/register">注册</a></li>
+	            {/if}
 	        </ul>
 	        <a class="res-nav_click" href="#"><i class="fa-bars"></i></a>
 	    </div>
@@ -159,6 +164,8 @@
 	        <h2>套餐选购</h2>
 	        <h6>新注册用户将有1小时50M的免费流量可用，欢迎选购适合您的套餐</h6>
 	        <div class="team-leader-block clearfix">
+	        	<form id="pt1" action="/buy" method="post" onclick="submit();">
+	        	<input name="amount" type="text" hidden="hidden" value="15" />
 	            <div class="team-leader-box">
 	            	<div class="team-bg" style="">
 	            		<h4 class="wow fadeInDown delay-03s">轻型套餐</h4>
@@ -171,6 +178,9 @@
 	            		<i class="fa fa-shopping-cart fa-3x wow fadeInDown delay-03s"></i>
 	            	</div>
 	            </div>
+	            </form>
+	            <form id="pt2" action="/buy" method="post" onclick="submit();">
+	        	<input name="amount" type="text" hidden="hidden" value="50" />
 	            <div class="team-leader-box">
 	                <div class="team-bg" style="">
 	            		<h4 class="wow fadeInDown delay-06s">普通套餐</h4>
@@ -183,6 +193,9 @@
 	            		<i class="fa fa-shopping-cart fa-3x wow fadeInDown delay-06s"></i>
 	            	</div>
 	            </div>
+	            </form>
+	            <form id="pt3" action="/buy" method="post" onclick="submit();">
+	        	<input name="amount" type="text" hidden="hidden" value="100" />
 	            <div class="team-leader-box">
 	                <div class="team-bg" style="">
 	            		<h4 class="wow fadeInDown delay-09s">高级套餐</h4>
@@ -195,6 +208,7 @@
 	            		<i class="fa fa-shopping-cart fa-3x wow fadeInDown delay-09s"></i>
 	            	</div>
 	            </div>
+	            </form>
 	        </div>
 	    </div>
 	</section><!--main-section team-end-->

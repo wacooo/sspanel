@@ -34,6 +34,37 @@ class VpnPackage {
 		$x = $package->amount;
 		$x = $x / 1024 / 1024 / 1024;
 		$y = round($month);
+		
+		$traffics = [16, 51, 101];
+		$prices = [10, 35, 58, 15, 45, 78, 20, 60, 108];
+		$mons = [1, 6, 12];
+		$r = 0;
+		$tl = count($traffics);
+		for ($r = 0 ; $r < $tl ; $r++) {
+			if ($traffics[$r] > $x) {
+				break;
+			}
+		}
+		$r = ($r == $tl? $r-1 : $r);
+		
+		$p = 0;
+		$ty = $y;
+		$ml = count($mons);
+		for ($i = 0 ; $i < $ml; $i++) {
+			$index = $ml - $i - 1;
+			if ($ty >= $mons[$index]) {
+				$p += $ty/$mons[$index] * $prices[$r*$ml+$index];
+				$ty = $ty % $mons[$index];
+			}
+		}
+		return $p;
+	}
+	
+	public static function computePrice2($package) {
+		$month = ($package->end_time - $package->start_time) / 3600 / 24 / 31;
+		$x = $package->amount;
+		$x = $x / 1024 / 1024 / 1024;
+		$y = round($month);
 		$fy = $y - floor($y/6);
 		$z = 0;			
 		if ($x <= 100) {

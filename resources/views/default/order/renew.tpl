@@ -35,15 +35,16 @@
 	
 		<div class="row">
 			<h5>已优惠 <span id="discount" class="red-text">0元</span></h5>
-			<h6 class="red-text">您可享受优惠：满6个月送1个月，满1年送2个月</h6>
+			<h6 class="red-text">购满6个月或1年将有优惠</h6>
 			<br>
-		  	<h5>请选择您的续约套餐：</h5>
+		  	<h5>请选择您的购买的月数：</h5>
 		</div>
 		<div class="row">
 		<div class="input-field col s12">
 		  <form id="renewForm" action="/order/renew" class="col s7 m7" method="post" target="_blank">
 		    <select id="month" name="month">
 		      <option value="1" selected>续约1个月</option>
+		      <option value="3">续约3个月</option>
 		      <option value="6">续约6个月</option>
 		      <option value="12">续约12个月</option>
 		    </select>
@@ -101,20 +102,30 @@ $(document).ready(function(){
 	function update(){
 		var x = $("#amount").val();
 		var y = $("#month").val();
-		var z = 0;
-		var o = 0;
-		var fy = y - Math.floor(y/6);
-		if (x <= 100) {
-			z = (0.2*x+8) * fy;
-			o = (0.2*x+8) * y;
-		}else {
-			z = (0.1*x+18)*fy;
-			o = (0.1*x+18) * y;
+		var traffics = [16, 51, 101];
+		var prices = [10, 35, 58, 15, 45, 78, 20, 60, 108];
+		var mons = [1, 6, 12];
+		var r = 0;
+		for (r = 0 ; r < traffics.length ; r++) {
+			if (traffics[r] > x) {
+				break;
+			}			
 		}
-		z = round(z).toFixed(1);
-		var discount = round(o - z);		
+		r = (r == traffics.length? r-1 : r);
+		
+		var p = 0;
+		var ty = y;
+		for (var i = 0 ; i < mons.length; i++) {
+			var index = mons.length - i - 1;
+			if (ty >= mons[index]) {
+				p += ty/mons[index] * prices[r*mons.length+index]
+				ty = ty % mons[index];
+			}
+		}
+				
+		var discount = prices[r*mons.length] * y - p;		
 		$("#discount").text(discount+"元");
-		displayPrice(z);
+		displayPrice(p);
 	}
 	
 	$("#buynow").click(function(){

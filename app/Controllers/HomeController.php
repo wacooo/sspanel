@@ -72,14 +72,14 @@ class HomeController extends BaseController
         return $this->view()->assign('homeIndexMsg', $homeIndexMsg)->display('download.tpl');
     }
     
-    public function buy()
+    public function buy($request, $response, $args)
     {
-    	return $this->view()->display('buy.tpl');
+    	$amount = $request->getParam("amount");    	
+    	return $this->view()->assign("amount", $amount)->display('buy.tpl');
     }
     public function home()
     {
-        $homeIndexMsg = DbConfig::get('home-index');
-        return $this->view()->assign('homeIndexMsg', $homeIndexMsg)->display('home.tpl');
+          return $this->view()->display('home.tpl');
     }
 
     public function pay($request, $response, $args){

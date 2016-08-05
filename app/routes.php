@@ -38,6 +38,7 @@ $app->get('/debug', 'App\Controllers\HomeController:debug');
 $app->post('/debug', 'App\Controllers\HomeController:postDebug');
 $app->get('/download', 'App\Controllers\HomeController:download');
 $app->get('/buy', 'App\Controllers\HomeController:buy');
+$app->post('/buy', 'App\Controllers\HomeController:buy');
 $app->get('/pay', 'App\Controllers\HomeController:pay');
 
 $app->get('/index', 'App\Controllers\HomeController:index');

@@ -3,6 +3,8 @@
 <div class="container">
     <br><br>
 
+	<div class="section">
+	
 	<div class="row">
 	  <div class="col m8">
 		<div class="calculator-box" style="display: block;"><div class="calculator-container" style="">
@@ -29,78 +31,56 @@
 		   </div>
 		 </div>
 	</div>
-	</div>
-		
-	<div class="row">
-		<div class="col s4 m5"><p/>
-			<h5>已优惠<span id="discount" class="red-text">0元</span></h5>
-			<h6 class="red-text">满6个月送1个月，满1年送2个月</h6>			
-		</div>
-		 <div class="col s4 m1">
-			<p>
-				<!--<a class="waves-effect waves-light btn gray">重置</a>-->
-			</p>
-		</div> 
-		<div class="col s4 m2">
-			<p>
-				<a id="buynow" class="waves-effect waves-light btn red">立即购买</a>
-			</p>
-		</div>
-	</div>
+	</div>	
 	
-	<div class="row">
-	<br><br>
-
-		<div class="col s12 m8">
-    			<h5>月流量：<span id="display-amount" class="blue-text">10G</span></h5>
-			 	<div class="range-field">
-				  <input type="range" id="display-amount-value" min="10" max="1000" value="10" />
-				</div>   	
-  	    </div>
-    </div>
-
-    <div class="row">
-     	<div class="col s12 m8">
-    			<h5>月数：<span id="display-month" class="blue-text">1个月</span></h5>
-			 	<div class="range-field">
-				  <input type="range" id="display-month-value" min="1" max="36" value="1" />
-				</div>   	
-  	    </div>
-  	</div>
-
+		<div class="row">
+			<h5>已优惠 <span id="discount" class="red-text">0元</span></h5>
+			<h6 class="red-text">您选择的套餐每月有{$amount}G流量</h6>
+			<br>
+		  	<h5>请选择您购买的月数：</h5>
+		</div>
+		<div class="row">
+		<div class="input-field col s12">
+		  <form id="payForm" action="/order/pay" class="col s7 m7" method="post" target="_blank">
+		    <select id="month" name="month">
+		      <option value="1" selected>续约1个月</option>
+		      <option value="3">续约3个月</option>
+		      <option value="6">续约6个月</option>
+		      <option value="12">续约12个月</option>
+		    </select>
+		    <input id="amount" name="amount" hidden="hidden" value={$amount} />
+		  </form>
+		  </div>
+		</div>
+		</div>
+		
+		<div class="row">
+			<div class="col s4 m2">
+				<p>
+					<a id="buynow" class="waves-effect waves-light btn red">立即购买</a>
+				</p>
+			</div> 		
+		</div>
+	</div>
    <div class="section">
-   <br><br><br><br>
+	   <br><br><br><br><br><br>
     </div>
-    
-  <form id="pay" hidden="hidden" action="/order/pay" method="post" target="_blank">
-    <input name="amount" id="amount" type="text" value="10" size="35"  />
-    <input name="month" id="month" type="text" value="10" size="35"  />
-   </form>
-    
 </div>
 
 {include file='footer.tpl'}
 
 <script type="text/javascript">
 $(document).ready(function(){
-	
+
+	$("#month").change(function() {
+		update();
+	});
+
 	function round(num, digits){
 		digits = digits == null ? 1:digits; 
 		var coef = Math.pow(10, digits);
 		return Math.round(num*coef)/coef;  
 	}
-	
-	$("#display-amount-value").change(function() {
-		var nv = $(this).val()+"G";
-		$("#display-amount").html(nv);
-		update();
-	});
-	
-	$("#display-month-value").change(function() {
-		var nv = $(this).val()+"个月";
-		$("#display-month").html(nv);
-		update();
-	});
 	
 	function displayPrice(price) {
 		var pstr = price.toString();
@@ -120,36 +100,39 @@ $(document).ready(function(){
 	}
 	
 	function update(){
-		var x = $("#display-amount-value").val();
-		var y = $("#display-month-value").val();
-		var z = 0;
-		var o = 0;
-		var fy = y - Math.floor(y/6);
-		if (x <= 100) {
-			z = (0.2*x+8) * fy;
-			o = (0.2*x+8) * y;
-		}else {
-			z = (0.1*x+18)*fy;
-			o = (0.1*x+18) * y;
+		var x = $("#amount").val();
+		var y = $("#month").val();
+		var traffics = [16, 51, 101];
+		var prices = [10, 35, 58, 15, 45, 78, 20, 60, 108];
+		var mons = [1, 6, 12];
+		var r = 0;
+		for (r = 0 ; r < traffics.length ; r++) {
+			if (traffics[r] > x) {
+				break;
+			}			
 		}
-		z = round(z).toFixed(1);
-		var highp = (0.3*x + 8)*y;
-		var discount = round(o - z);		
+		r = (r == traffics.length? r-1 : r);
+		
+		var p = 0;
+		var ty = y;
+		for (var i = 0 ; i < mons.length; i++) {
+			var index = mons.length - i - 1;
+			if (ty >= mons[index]) {
+				p += ty/mons[index] * prices[r*mons.length+index]
+				ty = ty % mons[index];
+			}
+		}
+				
+		var discount = prices[r*mons.length] * y - p;		
 		$("#discount").text(discount+"元");
-		displayPrice(z);
+		displayPrice(p);
 	}
 	
 	$("#buynow").click(function(){
-		
-		var a = $("#display-amount-value").val();
-		var m = $("#display-month-value").val();
-		$("#amount").val(a);
-		$("#month").val(m);
-		$("#pay").submit();
+		$("#payForm").submit();
 	});
 	
 	update();
 });
 
-</script>   
-
+</script>
