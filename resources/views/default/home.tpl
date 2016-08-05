@@ -15,7 +15,7 @@
 <!-- Animate-->
 <link href="http://cdn.bootcss.com/animate.css/3.5.2/animate.css" rel="stylesheet">
 
-<link href="css/home.css" rel="stylesheet" type="text/css"/>
+<link href="/assets/public/css/home.css" rel="stylesheet" type="text/css"/>
 
 <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -26,7 +26,7 @@
 	<header class="header" id="header" style="overflow:hidden;"><!--header-start-->
 		<div class="container">
 			<figure class="logo animated fadeInDown delay-07s">
-		    	<a href="#"><img src="img/logo.png" alt=""></a>	
+		    	<a href="#"><img src="/assets/public/img/logo.png" alt=""></a>	
 		    </figure>	
 		    <h1 class="animated fadeInDown delay-07s">长颈兔</h1>
 		    <ul class="we-create animated fadeInUp delay-1s">
@@ -42,7 +42,7 @@
 	        	<li><a href="#header">首页</a></li>
 	            <li><a href="/buy">购买</a></li>
 	            <li><a href="#service">教程</a></li>
-	            <li class="small-logo"><a href="#header"><img src="img/small-logo.png" alt=""></a></li>
+	            <li class="small-logo"><a href="#header"><img src="/assets/public/img/small-logo.png" alt=""></a></li>
 	            <li><a href="/download">客户端下载</a></li>
 	            <li><a href="/auth/login">登录</a></li>
 	            <li><a href="/auth/register">注册</a></li>
@@ -105,7 +105,7 @@
 	                </div>
 	            </div>
 	            <figure class="col-lg-8 col-sm-6  text-right wow fadeInUp delay-02s">
-	            	<img src="img/macbook-pro.png" alt="">
+	            	<img src="/assets/public/img/macbook-pro.png" alt="">
 	            </figure>
 	        
 	        </div>
@@ -116,7 +116,7 @@
 		<div class="container">
 	    	<div class="row">
 				<figure class="col-lg-5 col-sm-4 wow fadeInLeft">
-	            	<img  src="img/iphone.png" alt="">
+	            	<img  src="/assets/public/img/iphone.png" alt="">
 	            </figure>
 	        	<div class="col-lg-7 col-sm-8 featured-work">
 	            	<h2>优势特点</h2>
@@ -255,7 +255,7 @@
 	</div>
 	<footer class="footer">
 	    <div class="container">
-	        <div class="footer-logo"><a href="#"><img src="img/footer-logo.png" alt=""></a></div>
+	        <div class="footer-logo"><a href="#"><img src="/assets/public/img/footer-logo.png" alt=""></a></div>
 	        <span class="copyright">京ICP备14029588号-6</span>
 	    </div>
 	    <!-- 
