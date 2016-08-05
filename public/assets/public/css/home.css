@@ -943,3 +943,29 @@ border: 2px solid #fff;
 	.portfolioContainer{ width:280px !important; margin:0 auto !important } 
 	
 }
+
+#contact i{
+	color: #222;
+}
+
+#contact a{
+	color: #222;
+}
+
+#contact a:hover {
+    text-decoration: none;
+    color: #7cc576;
+}
+
+#contact a {
+    display: inline-block;
+    color: #222222;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+    line-height: 20px;
+    margin: 17px 32px;
+    transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+}

@@ -215,42 +215,18 @@
 	</section><!--business-talking-end-->
 	<div class="container">
 	<section class="main-section contact" id="contact">
-		
-	        <div class="row">
-	        	<div class="col-lg-6 col-sm-7 wow fadeInLeft">
-	            	<div class="contact-info-box address clearfix">
-	                	<h3><i class=" icon-map-marker"></i>Address:</h3>
-	                	<span>308 Negra Arroyo Lane<br>Albuquerque, New Mexico, 87111.</span>
-	                </div>
-	                <div class="contact-info-box phone clearfix">
-	                	<h3><i class="fa-phone"></i>Phone:</h3>
-	                	<span>1-800-BOO-YAHH</span>
-	                </div>
-	                <div class="contact-info-box email clearfix">
-	                	<h3><i class="fa-pencil"></i>email:</h3>
-	                	<span>hello@knightstudios.com</span>
-	                </div>
-	            	<div class="contact-info-box hours clearfix">
-	                	<h3><i class="fa-clock-o"></i>Hours:</h3>
-	                	<span><strong>Monday - Thursday:</strong> 10am - 6pm<br><strong>Friday:</strong> People work on Fridays now?<br><strong>Saturday - Sunday:</strong> Best not to ask.</span>
-	                </div>
-	                <ul class="social-link">
-	                	<li class="twitter"><a href="#"><i class="fa-twitter"></i></a></li>
-	                    <li class="facebook"><a href="#"><i class="fa-facebook"></i></a></li>
-	                    <li class="pinterest"><a href="#"><i class="fa-pinterest"></i></a></li>
-	                    <li class="gplus"><a href="#"><i class="fa-google-plus"></i></a></li>
-	                    <li class="dribbble"><a href="#"><i class="fa-dribbble"></i></a></li>
-	                </ul>
-	            </div>
-	        	<div class="col-lg-6 col-sm-5 wow fadeInUp delay-05s">
-	            	<div class="form">
-	                	<input class="input-text" type="text" name="" value="Your Name *" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;">
-	                    <input class="input-text" type="text" name="" value="Your E-mail *" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;">
-	                	<textarea class="input-text text-area" cols="0" rows="0" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;">Your Message *</textarea>
-	                    <input class="input-btn" type="submit" value="send message">
-	                </div>	
-	            </div>
-	        </div>
+		<h6>如果试用满意需要购买, 可以通过购买页面定制您的套餐。付款成功后联系QQ客服开通，或者将付款截图邮件发送到xxxx@gmail.com。我们将在收到款项后尽快开通您的套餐。</h6>
+        <div class="row">
+        	<div class="col-lg-4 col-lg-offset-2 wow fadeInUp text-center">
+        		<i class="fa fa-qq fa-3x sr-contact"></i>
+                <p><a id="client1" style="margin-bottom:0px" target="_blank" href="">QQ客服1</a></p>
+                <p><a id="client2" style="margin-top:0px" target="_blank" href="">QQ客服2</a></p>
+            </div>
+        	<div class="col-lg-4 text-center wow fadeInUp delay-05s">
+            	<i class="fa fa-shopping-cart fa-3x sr-contact"></i>
+                <p><a href="/buy">点击即刻购买</a></p>
+            </div>
+        </div>
 	</section>
 	</div>
 	<footer class="footer">
@@ -267,41 +243,40 @@
 
 	<script src="http://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 	<script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="https://rawgit.com/bigspotteddog/ScrollToFixed/master/jquery-scrolltofixed-min.js"></script>
+	<script src="/assets/public/js/jquery-scrolltofixed.js"></script>
 	<script src="http://cdn.bootcss.com/jquery-easing/1.3/jquery.easing.min.js"></script>
 	<script src="http://cdn.bootcss.com/jquery.isotope/1.5.25/jquery.isotope.min.js"></script>
 	<script src="http://cdn.bootcss.com/wow/1.1.2/wow.min.js"></script>
 	<script src="http://cdn.bootcss.com/classie/1.0.1/classie.min.js"></script>
-	  <script>
-    wow = new WOW(
+	<script type="text/javascript">
+$(window).load(function(){
+	$('#test').scrollToFixed();
+    $('.res-nav_click').click(function(){
+        $('.main-nav').slideToggle();
+        return false    
+        
+    });
+    var wow = new WOW(
       {
         animateClass: 'animated',
         offset:       100
       }
     );
     wow.init();
- 
-  </script>
-	<script type="text/javascript">
-
-$(window).load(function(){
-  $(window).load(function(){
+	$('.main-nav li a').bind('click',function(event){
+		var $anchor = $(this);
 		
-		$('.main-nav li a').bind('click',function(event){
-			var $anchor = $(this);
-			
-			$('html, body').stop().animate({
-				scrollTop: $($anchor.attr('href')).offset().top - 102
-			}, 1500,'easeInOutExpo');
-			/*
-			if you don't want to use the easing effects:
-			$('html, body').stop().animate({
-				scrollTop: $($anchor.attr('href')).offset().top
-			}, 1000);
-			*/
-			event.preventDefault();
-		});
-	})
+		$('html, body').stop().animate({
+			scrollTop: $($anchor.attr('href')).offset().top - 102
+		}, 1500,'easeInOutExpo');
+		/*
+		if you don't want to use the easing effects:
+		$('html, body').stop().animate({
+			scrollTop: $($anchor.attr('href')).offset().top
+		}, 1000);
+		*/
+		event.preventDefault();
+	});
   
   var $container = $('.portfolioContainer'),
       $body = $('body'),
@@ -340,6 +315,15 @@ $(window).load(function(){
          });
          return false;
     });
+
+    var client1 = '#client1';
+    var client2 = '#client2';
+    if (Math.random() < 0.5) {
+        client1 = '#client2';
+        client2 = '#client1';
+    }
+    $(client1).attr('href', 'http://sighttp.qq.com/authd?IDKEY=99eb368f41d120f099d93ca3e575a50831aba3f53878ee7a');
+    $(client2).attr('href', 'http://sighttp.qq.com/authd?IDKEY=2f4a019f109ae308493ce394574ed928596ef60135159d63');
   	
 });
 
