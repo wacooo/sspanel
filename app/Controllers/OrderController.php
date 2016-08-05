@@ -174,6 +174,7 @@ class OrderController extends UserController
 						$o->status = 1;
 						$o->status_desc = "金额不匹配. 原金额".$o->price.". 支付金额：".$cprice;
 					}
+					$o->save();
 					return $response->getBody()->write('success');
 				}
 			}else {

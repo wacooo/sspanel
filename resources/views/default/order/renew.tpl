@@ -34,9 +34,14 @@
 	</div>	
 	
 		<div class="row">
-		  <div class="input-field col s12">
-		  <form id="renewForm" action="/order/renew" class="col s7 m7" method="post" target="_blank">
+			<h5>已优惠 <span id="discount" class="red-text">0元</span></h5>
+			<h6 class="red-text">您可享受优惠：满6个月送1个月，满1年送2个月</h6>
+			<br>
 		  	<h5>请选择您的续约套餐：</h5>
+		</div>
+		<div class="row">
+		<div class="input-field col s12">
+		  <form id="renewForm" action="/order/renew" class="col s7 m7" method="post" target="_blank">
 		    <select id="month" name="month">
 		      <option value="1" selected>续约1个月</option>
 		      <option value="6">续约6个月</option>
@@ -46,6 +51,8 @@
 		  </form>
 		  </div>
 		</div>
+		</div>
+		
 		<div class="row">
 			<div class="col s4 m2">
 				<p>
@@ -105,7 +112,6 @@ $(document).ready(function(){
 			o = (0.1*x+18) * y;
 		}
 		z = round(z).toFixed(1);
-		var highp = (0.3*x + 8)*y;
 		var discount = round(o - z);		
 		$("#discount").text(discount+"元");
 		displayPrice(z);
