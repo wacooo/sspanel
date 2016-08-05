@@ -16,7 +16,6 @@
 <link href="http://cdn.bootcss.com/animate.css/3.5.2/animate.css" rel="stylesheet">
 
 <link href="css/home.css" rel="stylesheet" type="text/css"/>
-<!--[if IE]><style type="text/css">.pie {behavior:url(PIE.htc);}</style><![endif]-->
 
 <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
