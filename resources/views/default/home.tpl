@@ -32,7 +32,7 @@
 		    <ul class="we-create animated fadeInUp delay-1s">
 		    	<li>支持Shadowsocks，美国/日本/新加坡/台湾/香港/韩国精品服务线路。 手机电脑全平台支持，同时5终端，包年仅需58元。</li>
 		    </ul>
-		    <a class="link animated fadeInUp delay-1s" href="/auth/register">开始体验</a>
+		    <a class="link animated fadeInUp delay-1s" href="#service">开始体验</a>
 		</div>
 	</header><!--header-end-->
 
@@ -41,7 +41,7 @@
 	        <ul class="main-nav">
 	        	<li><a href="#header">首页</a></li>
 	            <li><a href="/buy">购买</a></li>
-	            <li><a href="#service">教程</a></li>
+	            <li><a href="#team">教程</a></li>
 	            <li class="small-logo"><a href="#header"><img src="/assets/public/img/small-logo.png" alt=""></a></li>
 	            <li><a href="/download">客户端下载</a></li>
 	            <li><a href="/auth/login">登录</a></li>
@@ -206,7 +206,8 @@
 	</section><!--business-talking-end-->
 	<div class="container">
 	<section class="main-section contact" id="contact">
-		<h6>如果试用满意需要购买, 可以通过购买页面定制您的套餐。付款成功后联系QQ客服开通，或者将付款截图邮件发送到xxxx@gmail.com。我们将在收到款项后尽快开通您的套餐。</h6>
+		<h6>如果您试用满意可以直接购买。套餐将在您付款后的一分钟内自动开通。
+如果您有其他问题，可以给我们发邮件或者咨询QQ客服。</h6>
         <div class="row">
         	<div class="col-lg-4 col-lg-offset-2 wow fadeInUp text-center">
         		<i class="fa fa-qq fa-3x sr-contact"></i>
@@ -214,8 +215,8 @@
                 <p><a id="client2" style="margin-top:0px" target="_blank" href="">QQ客服2</a></p>
             </div>
         	<div class="col-lg-4 text-center wow fadeInUp delay-05s">
-            	<i class="fa fa-shopping-cart fa-3x sr-contact"></i>
-                <p><a href="/buy">点击即刻购买</a></p>
+            	<i class="fa fa-envelope fa-3x sr-contact"></i>
+                <p><a href="mailto:support@mail.changjinglu.com">发送邮件</a></p>
             </div>
         </div>
 	</section>
@@ -254,7 +255,7 @@ $(window).load(function(){
       }
     );
     wow.init();
-	$('.main-nav li a').bind('click',function(event){
+	$('.main-nav li a,#header a').bind('click',function(event){
 		var $anchor = $(this);
 		
 		$('html, body').stop().animate({
