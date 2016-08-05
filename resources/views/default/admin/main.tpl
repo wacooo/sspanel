@@ -122,6 +122,12 @@
                         <i class="fa fa-user"></i> <span>套餐管理</span>
                     </a>
                 </li>
+                
+                 <li>
+                    <a href="/admin/order">
+                        <i class="fa fa-user"></i> <span>订单管理</span>
+                    </a>
+                </li>
 
                 <li>
                     <a href="/admin/invite">

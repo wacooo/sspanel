@@ -49,6 +49,7 @@
                             </tr>
                             {/foreach}
                         </table>
+                        {{$packages->render()}}
                     </div>
                 </div>
             </div>

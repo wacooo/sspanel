@@ -101,14 +101,13 @@
                     </a>
                 </li>
 
-               
+               <!--
                <li>
                     <a href="/user/node">
                         <i class="fa fa-sitemap"></i> <span>节点列表</span>
                     </a>
                 </li>
 
-                <!-- 
                 <li>
                     <a href="/user/profile">
                         <i class="fa fa-user"></i> <span>个人信息</span>
@@ -128,6 +127,11 @@
                 <li>
                     <a href="/user/edit">
                         <i class="fa  fa-pencil"></i> <span>修改资料</span>
+                    </a>
+                </li>                
+                <li>
+                    <a href="/order/list">
+                        <i class="fa  fa-pencil"></i> <span>订单列表</span>
                     </a>
                 </li>
 

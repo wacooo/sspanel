@@ -73,7 +73,11 @@ class AdminController extends UserController
     }
     
     public function packageList($request, $response, $args){
-    	$packages = Package::all();
+    	$pnum = $request->getParam("page");
+    	$pnum = $pnum == null ? 1 : $pnum;
+    	$psize = 10;
+    	$packages = Package::orderBy('id', 'desc')->paginate($psize, ['*'], 'page', $pnum);
+    	$packages->setPath("/admin/package");
     	return $this->view()->assign('packages', $packages)->display('admin/package.tpl');
     }
     

@@ -81,12 +81,31 @@ $app->group('/password', function () {
     $this->post('/token/{token}', 'App\Controllers\PasswordController:handleToken');
 })->add(new Guest());
 
+// Order
+$app->group('/order', function(){
+	$this->post('/pay', 'App\Controllers\OrderController:pay');
+	$this->post('/renew', 'App\Controllers\OrderController:renew');
+	$this->get('/payorder', 'App\Controllers\OrderController:payOrder');
+	$this->get('/success', 'App\Controllers\OrderController:success');
+	$this->get('/fail', 'App\Controllers\OrderController:fail');
+	$this->get('/list', 'App\Controllers\OrderController:list');
+	$this->get('/renew_options', 'App\Controllers\OrderController:renewOptions');
+})->add(new Auth());
+
+// Callback
+$app->group('/system',function(){
+	$this->get('/callback', 'App\Controllers\OrderController:callback');
+});
+
 // Admin
 $app->group('/admin', function () {
     $this->get('', 'App\Controllers\AdminController:index');
     $this->get('/', 'App\Controllers\AdminController:index');
     $this->get('/trafficlog', 'App\Controllers\AdminController:trafficLog');
     $this->get('/checkinlog', 'App\Controllers\AdminController:checkinLog');
+    
+    // order
+    $this->get('/order', 'App\Controllers\OrderController:listAll');
     
     // package
     $this->get('/package', 'App\Controllers\AdminController:packageList');

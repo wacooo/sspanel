@@ -205,4 +205,11 @@ class Tools
         }
         return $user->port;
     }
+    
+    public static function getTimeStr($time) {
+    	if ($time == NULL) {
+    		return "--";
+    	}
+    	return date("Y-m-d H:i", $time);
+    }
 }

@@ -39,7 +39,7 @@ class VpnPackage {
 		if ($x <= 100) {
 			$z= (0.2 * $x + 8)* $fy;
 		}else{
-			$z = (0.1 * $x + 18) * $y;
+			$z = (0.1 * $x + 18) * $fy;
 		}
 		return $z;
 	}
@@ -86,7 +86,7 @@ class VpnPackage {
 	
 	public static function getUsingPackage($uid){
 		$usingPackages = Package::where('uid', $uid)->where('status', 2);
-		$usingPackage = $usingPackages->firstOrFail();
+		$usingPackage = $usingPackages->first();
 		return $usingPackage;
 	}
 	

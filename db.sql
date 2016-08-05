@@ -183,3 +183,25 @@ create index `IDX_PACKAGE_START` on vpn_package(`start_time`);
 create index `IDX_PACKAGE_END` on vpn_package(`end_time`);
 create index `IDX_PACKAGE_NEXT_RESET` on vpn_package(`next_reset_time`);
 create index `IDX_PACKAGE_STATUS` on vpn_package(`status`);
+
+
+DROP TABLE IF EXISTS `vpn_order`;
+CREATE TABLE `vpn_order` (
+	`id` int PRIMARY KEY AUTO_INCREMENT,
+	`orderid` varchar(32) NOT NULL unique,
+	`partner_payment_id` varchar(32),
+	`price` float NOT NULL,
+	`create_time` int,
+	`pay_time` int,
+	`name` varchar(32),
+	`status` tinyint not null,
+	`status_desc` varchar(32),
+	`pid` int not null,
+	`uid` int not null
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+create index `IDX_ORDER_CREATE_TS` on vpn_order(`create_time`);
+create index `IDX_ORDER_STATUS` on vpn_order(`status`);
+create index `IDX_ORDER_PID` on vpn_order(`pid`);
+create index `IDX_ORDER_UID` on vpn_order(`uid`);
+
