@@ -40,7 +40,7 @@
 		<div class="container">
 	        <ul class="main-nav">
 	        	<li><a href="#header">首页</a></li>
-	            <li><a href="/buy">购买</a></li>
+	            <li><a href="#team">购买</a></li>
 	            <li><a href="#team">教程</a></li>
 	            <li class="small-logo"><a href="#header"><img src="/assets/public/img/small-logo.png" alt=""></a></li>
 	            <li><a href="/download">客户端下载</a></li>
