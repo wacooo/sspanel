@@ -31,7 +31,7 @@ $app->add(new WhoopsMiddleware);
 
 
 // Home
-$app->get('/', 'App\Controllers\HomeController:index');
+$app->get('/', 'App\Controllers\HomeController:home');
 $app->get('/code', 'App\Controllers\HomeController:code');
 $app->get('/tos', 'App\Controllers\HomeController:tos');
 $app->get('/debug', 'App\Controllers\HomeController:debug');
@@ -40,7 +40,7 @@ $app->get('/download', 'App\Controllers\HomeController:download');
 $app->get('/buy', 'App\Controllers\HomeController:buy');
 $app->get('/pay', 'App\Controllers\HomeController:pay');
 
-$app->get('/home', 'App\Controllers\HomeController:home');
+$app->get('/index', 'App\Controllers\HomeController:index');
 
 // User Center
 $app->group('/user', function () {
