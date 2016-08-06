@@ -7,7 +7,7 @@
 
         <!--   Icon Section   -->
         <div class="row">
-            <div class="col s12 m4">
+            <div class="col-md-4">
                 <h5><i class="fa fa-windows fa-3x"></i> &nbsp; Windows</h5>
                 <p><strong>客户端</strong></p>
                 <ul>
@@ -23,15 +23,15 @@
                     </li>
                 </ul>
             </div>
-            <div class="col s12 m4">
+            <div class="col-md-4">
                 <h5><i class="fa fa-apple fa-3x"></i> &nbsp; Mac OS X</h5><p><strong>客户端</strong></p><ul><li>ShadowsocksX: <a href="https://github.com/shadowsocks/shadowsocks-iOS/releases/download/2.6.3/ShadowsocksX-2.6.3.dmg">2.6.3.dmg</a></li><li>GoAgentX: <a href="https://goagentx.googlecode.com/files/GoAgentX-v2.2.9.dmg">v2.2.9.dmg</a></li></ul><p><strong>命令行客户端</strong></p><ul><li><code>brew install shadowsocks-libev</code></li></ul>
             </div>
 
-            <div class="col s12 m4">
+            <div class="col-md-4">
                 <h5><i class="fa fa-linux fa-3x"></i> &nbsp; Linux</h5><p><strong>客户端</strong></p><ul><li>Shadowsocks-Qt5:<ul><li><a href="https://github.com/shadowsocks/shadowsocks-qt5/wiki/Installation">最新版</a></li></ul></li></ul><p><strong>命令行客户端</strong></p><ul><li>shadowsocks-python:<ul><li><code>pip install shadowsocks</code></li></ul></li></ul>
             </div>
 
-            <div class="col s12 m4">
+            <div class="col-md-4">
                 <h5><i class="fa fa-android fa-3x"></i> &nbsp; Android</h5>
                 <ul>
                     <li>shadowsocks-android:
@@ -42,11 +42,11 @@
                 </ul>
             </div>
 
-            <div class="col s12 m4">
+            <div class="col-md-4">
                 <h5><i class="fa fa-apple fa-3x"></i> &nbsp; iOS</h5><ul><li>Potatso:<ul><li><a href="https://itunes.apple.com/app/apple-store/id1070901416?pt=2305194&ct=shadowsocks.org&mt=8">App Store</a></li></ul></li><li>MobileShadowSocks:<ul><li><a href="http://apt.thebigboss.org/onepackage.php?bundleid=com.linusyang.shadowsocks">Big Boss（需越狱）</a></li></ul></li></ul>
             </div>
 
-            <div class="col s12 m4">
+            <div class="col-md-4">
                 <h5><i class="fa fa-rss fa-flip-horizontal fa-3x"></i> &nbsp; OpenWRT</h5><ul><li>shadowsocks-libev</li><ul><li><code>opkg install shadowsocks-libev</code></li></ul><li>shadowsocks-libev-polarssl</li><ul><li><code>opkg install shadowsocks-libev-polarssl</code></li></ul></ul>
             </div>
         </div>

@@ -9,7 +9,7 @@
 		    	<li>支持Shadowsocks，美国/日本/新加坡/台湾/香港/韩国精品服务线路。 手机电脑全平台支持，同时5终端，包年仅需58元。</li>
 		    	<li>注册即可赠送1G流量，免费试用。</li>
 		    </ul>
-		    <a class="link animated fadeInUp delay-1s" href="#service">开始体验</a>
+		    <a class="link animated fadeInUp delay-1s" href="/#service">开始体验</a>
 		</div>
 	</header><!--header-end-->
 {include file='nav.tpl'}
