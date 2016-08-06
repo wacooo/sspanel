@@ -4,13 +4,6 @@
 	    </div>
 	</footer>
 
-	<script src="http://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-	<script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="/assets/public/js/jquery-scrolltofixed.js"></script>
-	<script src="http://cdn.bootcss.com/jquery-easing/1.3/jquery.easing.min.js"></script>
-	<script src="http://cdn.bootcss.com/jquery.isotope/1.5.25/jquery.isotope.min.js"></script>
-	<script src="http://cdn.bootcss.com/wow/1.1.2/wow.min.js"></script>
-	<script src="http://cdn.bootcss.com/classie/1.0.1/classie.min.js"></script>
 	<script type="text/javascript">
 		$(function() {
 			$('#test').scrollToFixed();
