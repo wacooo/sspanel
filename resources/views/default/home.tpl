@@ -205,7 +205,7 @@
 	  
 	  $(window).smartresize(function(){
 	    // check if columns has changed
-	    var currentColumns = Math.floor( ( $body.width() -30 ) / colW );
+	    var currentColumns = Math.floor( ( $(window).width() -30 ) / colW );
 	    if ( currentColumns !== columns ) {
 	      // set new column count
 	      columns = currentColumns;
