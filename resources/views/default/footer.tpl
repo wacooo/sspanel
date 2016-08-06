@@ -1,50 +1,34 @@
-<footer class="page-footer orange">
-	<div class="container">
-		<div class="row">
-			<div class="col l6 s12">
-				<h5 class="white-text">关于</h5>
-				<p class="grey-text text-lighten-4">本站提供某种帐号用于科学上网.</p>
+	<footer class="footer">
+	    <div class="container">
+	        <span class="copyright">京ICP备14029588号-6</span>
+	    </div>
+	</footer>
 
-
-			</div>
-			<div class="col l3 s12">
-				<h5 class="white-text">用户</h5>
-				<ul>
-				{if $user->isLogin}
-					<li><a class="white-text" href="/user">用户中心</a></li>
-					<li><a class="white-text" href="/user/logout">退出</a></li>
-				{else}
-					<li><a class="white-text" href="/auth/login">登录</a></li>
-					<li><a class="white-text" href="/auth/register">注册</a></li>
-				{/if}
-				</ul>
-			</div>
-			<div class="col l3 s12">
-				<h5 class="white-text">页面</h5>
-				<ul>
-					<!-- <li><a class="white-text" href="/code">邀请码</a></li> -->
-					<li><a class="white-text" href="/tos">用户协议</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-	<div class="footer-copyright">
-		<div class="container">
-			&copy; {$config["appName"]}
-			<!--  Powered by <a class="orange-text text-lighten-3" href="https://github.com/orvice/ss-panel">ss-panel</a> {$config["version"]} 
-		 Theme by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a> -->
-		</div>
-		<div style="display:none;">
-			{$analyticsCode}
-		</div>
-	</div>
-</footer>
-
-
-<!--  Scripts-->
-<script src="/assets/public/js/jquery.min.js"></script>
-<script src="/assets/materialize/js/materialize.min.js"></script>
-<script src="/assets/materialize/js/init.js"></script>
-
+	<script src="http://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+	<script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="/assets/public/js/jquery-scrolltofixed.js"></script>
+	<script src="http://cdn.bootcss.com/jquery-easing/1.3/jquery.easing.min.js"></script>
+	<script src="http://cdn.bootcss.com/jquery.isotope/1.5.25/jquery.isotope.min.js"></script>
+	<script src="http://cdn.bootcss.com/wow/1.1.2/wow.min.js"></script>
+	<script src="http://cdn.bootcss.com/classie/1.0.1/classie.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$('#test').scrollToFixed();
+			$('.main-nav li a,#header a').bind('click',function(event){
+				var $anchor = $(this);
+				
+				$('html, body').stop().animate({
+						scrollTop: $($anchor.attr('href')).offset().top - 102
+					}, 1500,'easeInOutExpo');
+				/*
+				if you don't want to use the easing effects:
+				$('html, body').stop().animate({
+					scrollTop: $($anchor.attr('href')).offset().top
+				}, 1000);
+				*/
+				event.preventDefault();
+			});
+		});
+	</script>
 </body>
 </html>

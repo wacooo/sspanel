@@ -1,28 +1,4 @@
-<!doctype html>
-<html lang="zh-cmn-Hans">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, maximum-scale=1">
-<title>{$config["appName"]}</title>
-<link rel="shortcut icon" href="favicon.ico" type="img/x-icon"/>
-
-<!-- Bootstrap Core CSS -->
-<link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
-<!-- Custom Fonts -->
-<link href="http://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-<link href="http://fonts.useso.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"/>
-<link href="http://fonts.useso.com/css?family=Open+Sans:400,300,800italic,700italic,600italic,400italic,300italic,800,700,600" rel="stylesheet" type="text/css"/>
-<!-- Animate-->
-<link href="http://cdn.bootcss.com/animate.css/3.5.2/animate.css" rel="stylesheet">
-
-<link href="/assets/public/css/home.css" rel="stylesheet" type="text/css"/>
-
-<!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
-</head>
-<body>
+{include file='header.tpl'}
 	<header class="header" id="header" style="overflow:hidden;"><!--header-start-->
 		<div class="container">
 			<figure class="logo animated fadeInDown delay-07s">
@@ -36,26 +12,7 @@
 		    <a class="link animated fadeInUp delay-1s" href="#service">开始体验</a>
 		</div>
 	</header><!--header-end-->
-
-	<nav class="main-nav-outer" id="test"><!--main-nav-start-->
-		<div class="container">
-	        <ul class="main-nav">
-	        	<li><a href="#header">首页</a></li>
-	            <li><a href="#team">购买</a></li>
-	            <li><a href="http://www.godusevpn.mobi/wiki.html">教程</a></li>
-	            <li class="small-logo"><a href="#header"><img src="/assets/public/img/small-logo.png" alt=""></a></li>
-	            <li><a href="/download">客户端下载</a></li>
-	            {if $user->isLogin}
-	                <li><a href="/user">用户中心</a></li>
-	                <li><a href="/user/logout">退出</a></li>
-	            {else}
-	                <li><a href="/auth/login">登录</a></li>
-	                <li><a href="/auth/register">注册</a></li>
-	            {/if}
-	        </ul>
-	        <a class="res-nav_click" href="#"><i class="fa-bars"></i></a>
-	    </div>
-	</nav><!--main-nav-end-->
+{include file='nav.tpl'}
 
 	<section class="main-section" id="service">
 		<div class="container">
@@ -236,103 +193,39 @@
         </div>
 	</section>
 	</div>
-	<footer class="footer">
-	    <div class="container">
-	        <span class="copyright">京ICP备14029588号-6</span>
-	    </div>
-	    <!-- 
-	        All links in the footer should remain intact. 
-	        Licenseing information is available at: http://bootstraptaste.com/license/
-	        You can buy this theme without footer links online at: http://bootstraptaste.com/buy/?theme=Knight
-	    -->
-	</footer>
-
-	<script src="http://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-	<script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="/assets/public/js/jquery-scrolltofixed.js"></script>
-	<script src="http://cdn.bootcss.com/jquery-easing/1.3/jquery.easing.min.js"></script>
-	<script src="http://cdn.bootcss.com/jquery.isotope/1.5.25/jquery.isotope.min.js"></script>
-	<script src="http://cdn.bootcss.com/wow/1.1.2/wow.min.js"></script>
-	<script src="http://cdn.bootcss.com/classie/1.0.1/classie.min.js"></script>
 	<script type="text/javascript">
-$(window).load(function(){
-	$('#test').scrollToFixed();
-    $('.res-nav_click').click(function(){
-        $('.main-nav').slideToggle();
-        return false    
-        
-    });
-    var wow = new WOW(
-      {
-        animateClass: 'animated',
-        offset:       100
-      }
-    );
-    wow.init();
-	$('.main-nav li a,#header a').bind('click',function(event){
-		var $anchor = $(this);
-		
-		$('html, body').stop().animate({
-			scrollTop: $($anchor.attr('href')).offset().top - 102
-		}, 1500,'easeInOutExpo');
-		/*
-		if you don't want to use the easing effects:
-		$('html, body').stop().animate({
-			scrollTop: $($anchor.attr('href')).offset().top
-		}, 1000);
-		*/
-		event.preventDefault();
+	$(function(){
+	    var wow = new WOW(
+	      {
+	        animateClass: 'animated',
+	        offset:       100
+	      }
+	    );
+	    wow.init();
+	  
+	  $(window).smartresize(function(){
+	    // check if columns has changed
+	    var currentColumns = Math.floor( ( $body.width() -30 ) / colW );
+	    if ( currentColumns !== columns ) {
+	      // set new column count
+	      columns = currentColumns;
+	      // apply width to container manually, then trigger relayout
+	      $container.width( columns * colW )
+	        .isotope('reLayout');
+	    }
+	    
+	  }).smartresize(); // trigger resize to set container width
+
+	    var client1 = '#client1';
+	    var client2 = '#client2';
+	    if (Math.random() < 0.5) {
+	        client1 = '#client2';
+	        client2 = '#client1';
+	    }
+	    $(client1).attr('href', 'http://sighttp.qq.com/authd?IDKEY=99eb368f41d120f099d93ca3e575a50831aba3f53878ee7a');
+	    $(client2).attr('href', 'http://sighttp.qq.com/authd?IDKEY=2f4a019f109ae308493ce394574ed928596ef60135159d63');
+	  	
 	});
-  
-  var $container = $('.portfolioContainer'),
-      $body = $('body'),
-      colW = 375,
-      columns = null;
+	</script>
 
-  
-  $container.isotope({
-    // disable window resizing
-    resizable: true,
-    masonry: {
-      columnWidth: colW
-    }
-  });
-  
-  $(window).smartresize(function(){
-    // check if columns has changed
-    var currentColumns = Math.floor( ( $body.width() -30 ) / colW );
-    if ( currentColumns !== columns ) {
-      // set new column count
-      columns = currentColumns;
-      // apply width to container manually, then trigger relayout
-      $container.width( columns * colW )
-        .isotope('reLayout');
-    }
-    
-  }).smartresize(); // trigger resize to set container width
-  $('.portfolioFilter a').click(function(){
-        $('.portfolioFilter .current').removeClass('current');
-        $(this).addClass('current');
- 
-        var selector = $(this).attr('data-filter');
-        $container.isotope({
-			
-            filter: selector,
-         });
-         return false;
-    });
-
-    var client1 = '#client1';
-    var client2 = '#client2';
-    if (Math.random() < 0.5) {
-        client1 = '#client2';
-        client2 = '#client1';
-    }
-    $(client1).attr('href', 'http://sighttp.qq.com/authd?IDKEY=99eb368f41d120f099d93ca3e575a50831aba3f53878ee7a');
-    $(client2).attr('href', 'http://sighttp.qq.com/authd?IDKEY=2f4a019f109ae308493ce394574ed928596ef60135159d63');
-  	
-});
-
-</script>
-</body>
-</html>
+{include file='footer.tpl'}

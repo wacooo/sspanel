@@ -1,4 +1,5 @@
 {include file='header.tpl'}
+{include file='nav.tpl'}
 
 <div class="container">
     <br><br>
