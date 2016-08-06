@@ -95,6 +95,14 @@ class OrderController extends UserController
 	
 	public function pay($request, $response, $args)
 	{
+		$u = Auth::getUser();
+		$op = VpnPackage::getUsingPackage($u->id);
+		if ($op != null) {
+			$rs['ret'] = 0;
+			$rs['msg'] = "已经有一个正在使用的套餐,无法购买.";
+			return $response->getBody()->write(json_encode($rs));
+		}
+		
 		// create package
 		$a = $request->getParam("amount");
 		$m = $request->getParam("month");
@@ -118,20 +126,33 @@ class OrderController extends UserController
 		return $this->payWithPackage($request, $response, $p);
 	}
 	
-	public function renewOptions($request, $response, $args){
+	public function buy($request, $response, $args)
+	{
+		$u = Auth::getUser();
+		if ($u != null) {
+			$p = VpnPackage::getUsingPackage($u->id);
+			if ($p != null) {
+				return $this->redirect($response, "/order/renew");
+			}
+		}
+		$amount = $request->getParam("amount");
+		return $this->view()->assign("amount", $amount)->display('buy.tpl');
+	}
+	
+	public function renew($request, $response, $args){
 		$u = Auth::getUser();
 		$p = VpnPackage::getUsingPackage($u->id);
 		if ($p == null) {
-			return $response->getBody()->write("没有正在使用的套餐，无法续约。");
+			return $this->redirect($response, "/order/buy");
 		}
 		return $this->view()->assign("amount", $p->amount/1024/1024/1024)->display('order/renew.tpl');
 	}
 	
-	public function renew($request, $response, $args){
+	public function payRenew($request, $response, $args){
 		// create package
 		$u = Auth::getUser();
 		$m = $request->getParam("month");
-		$p = VpnPackage::findUsingPackageForUser($u->id);
+		$p = VpnPackage::getUsingPackage($u->id);
 		if (empty($p) || empty($m)) {
 			$rs['msg'] = "参数不全";
 			return $response->getBody()->write(json_encode($rs));
@@ -149,7 +170,8 @@ class OrderController extends UserController
 		$o = Order::where("orderid", $orderid)->first();
 		
 		if ($o == null) {
-			return $response->getBody()->write('failed, Invalid order.');
+			Logger::warning('failed, Invalid order.');
+			return $this->view()->display('order/fail.tpl');
 		}
 		
 		$tradeNo = $request->getParam('trade_no');
@@ -175,7 +197,7 @@ class OrderController extends UserController
 						$o->status_desc = "金额不匹配. 原金额".$o->price.". 支付金额：".$cprice;
 					}
 					$o->save();
-					return $response->getBody()->write('success');
+					return $this->view()->display('order/success.tpl');
 				}
 			}else {
 				Logger::info("Pay Callback - Failed to pay ".$orderid);
@@ -188,15 +210,7 @@ class OrderController extends UserController
 			Logger::info("Pay Callback - Failed to validate ".$orderid);
 		}
 		$o->save();
-		return $response->getBody()->write('failed');
-	}
-	
-	public function success(){
-		$this->view()->display('order/success.tpl');
-	}
-	
-	public function fail(){
-		$this->view()->display('order/fail.tpl');
+		return $this->view()->display('order/fail.tpl');
 	}
 	
 	public function listAll($request, $response, $args) {

@@ -35,24 +35,41 @@
 	
 		<div class="row">
 			<h5>已优惠 <span id="discount" class="red-text">0元</span></h5>
-			<h5 class="red-text">续约套餐- 月流量{$amount}G</h5>
 			<br>
-		  	<h5>请选择您的购买的月数：</h5>
+		  	<h5>请选择您购买的每月流量和月数：</h5>
 		</div>
+		
 		<div class="row">
 		<div class="input-field col s12">
-		  <form id="renewForm" action="/order/pay_renew" class="col s7 m7" method="post" target="_blank">
-		    <select id="month" name="month">
-		      <option value="1" selected>购买1个月</option>
-		      <option value="3">购买3个月</option>
-		      <option value="6">购买6个月</option>
-		      <option value="12">购买12个月</option>
+		  <form id="payForm" action="/order/pay" class="col s7 m7" method="post" target="_blank">
+		    <select id="amount" name="amount">
+		      <option value="15" 
+		      {if $amount==15 }
+		      selected
+		      {/if}
+		      >每月15G</option>
+		      <option value="50"
+		      {if $amount==50 }
+		      selected
+		      {/if}
+		      >每月50G</option>
+		      <option value="100"
+		      {if $amount==100 }
+		      selected
+		      {/if}
+		      >每月100G</option>
 		    </select>
-		    <input id="amount" name="amount" hidden="hidden" value={$amount} />
+
+		    <select id="month" name="month">
+		      <option value="1" selected>续约1个月</option>
+		      <option value="3">续约3个月</option>
+		      <option value="6">续约6个月</option>
+		      <option value="12">续约12个月</option>
+		    </select>
 		  </form>
 		  </div>
 		</div>
-		</div>
+
 		
 		<div class="row">
 			<div class="col s4 m2">
@@ -129,7 +146,7 @@ $(document).ready(function(){
 	}
 	
 	$("#buynow").click(function(){
-		$("#renewForm").submit();
+		$("#payForm").submit();
 	});
 	
 	update();

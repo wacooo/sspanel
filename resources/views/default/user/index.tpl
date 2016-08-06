@@ -30,7 +30,11 @@
                             <dt>邮箱</dt>
                             <dd>{$user->email}</dd>
                         </dl>
-
+      					<p align="center">
+				  			<a style="margin-top:20px;" href="http://www.godusevpn.mobi/wiki.html" target="_blank">
+				  				<button id="ss-pwd-update" style="width:150px;" class="btn btn-primary">如何使用</button>
+				  			</a>
+						</p>
                     </div>
                     <!--
                     <div class="box-footer">
@@ -95,10 +99,16 @@
                             <dt>剩余流量</dt>
                             <dd>{$user->unusedTraffic()}</dd>
                         </dl>
-                        {if $package != NULL}
+                        {if $package != NULL && $package->status == 2}
       					<p align="center">
-				  			<a style="margin-top:20px;" href="/order/renew_options" target="_blank">
+				  			<a style="margin-top:20px;" href="/order/renew" target="_blank">
 				  				<button id="ss-pwd-update" style="width:150px;" class="btn btn-primary">立即续费</button>
+				  			</a>
+						</p>
+						{else}
+      					<p align="center">
+				  			<a style="margin-top:20px;" href="/order/buy" target="_blank">
+				  				<button id="ss-pwd-update" style="width:150px;" class="btn btn-primary">选购套餐</button>
 				  			</a>
 						</p>
 						{/if}

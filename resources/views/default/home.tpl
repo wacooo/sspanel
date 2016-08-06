@@ -122,7 +122,7 @@
 	        <h2>套餐选购</h2>
 	        <h6>新注册可以免费使用1G流量2小时，欢迎选购适合您的套餐</h6>
 	        <div class="team-leader-block clearfix">
-	        	<form id="pt1" action="/buy" method="post" onclick="submit();">
+	        	<form id="pt1" action="/order/buy" method="post" onclick="submit();">
 	        	<input name="amount" type="text" hidden="hidden" value="15" />
 	            <div class="team-leader-box">
 	            	<div class="team-bg" style="">
@@ -137,7 +137,7 @@
 	            	</div>
 	            </div>
 	            </form>
-	            <form id="pt2" action="/buy" method="post" onclick="submit();">
+	            <form id="pt2" action="/order/buy" method="post" onclick="submit();">
 	        	<input name="amount" type="text" hidden="hidden" value="50" />
 	            <div class="team-leader-box">
 	                <div class="team-bg" style="">
@@ -152,7 +152,7 @@
 	            	</div>
 	            </div>
 	            </form>
-	            <form id="pt3" action="/buy" method="post" onclick="submit();">
+	            <form id="pt3" action="/order/buy" method="post" onclick="submit();">
 	        	<input name="amount" type="text" hidden="hidden" value="100" />
 	            <div class="team-leader-box">
 	                <div class="team-bg" style="">

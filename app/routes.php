@@ -37,8 +37,6 @@ $app->get('/tos', 'App\Controllers\HomeController:tos');
 $app->get('/debug', 'App\Controllers\HomeController:debug');
 $app->post('/debug', 'App\Controllers\HomeController:postDebug');
 $app->get('/download', 'App\Controllers\HomeController:download');
-$app->get('/buy', 'App\Controllers\HomeController:buy');
-$app->post('/buy', 'App\Controllers\HomeController:buy');
 $app->get('/pay', 'App\Controllers\HomeController:pay');
 
 $app->get('/index', 'App\Controllers\HomeController:index');
@@ -85,13 +83,17 @@ $app->group('/password', function () {
 // Order
 $app->group('/order', function(){
 	$this->post('/pay', 'App\Controllers\OrderController:pay');
-	$this->post('/renew', 'App\Controllers\OrderController:renew');
+	$this->post('/pay_renew', 'App\Controllers\OrderController:payRenew');
 	$this->get('/payorder', 'App\Controllers\OrderController:payOrder');
-	$this->get('/success', 'App\Controllers\OrderController:success');
-	$this->get('/fail', 'App\Controllers\OrderController:fail');
 	$this->get('/list', 'App\Controllers\OrderController:list');
-	$this->get('/renew_options', 'App\Controllers\OrderController:renewOptions');
+	$this->get('/renew', 'App\Controllers\OrderController:renew');
 })->add(new Auth());
+
+$app->group('/order', function(){
+	$this->post('/buy', 'App\Controllers\OrderController:buy');
+	$this->get('/buy', 'App\Controllers\OrderController:buy');
+});
+
 
 // Callback
 $app->group('/system',function(){

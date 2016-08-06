@@ -13,6 +13,7 @@ use App\Utils\Check;
 use App\Utils\Hash;
 use App\Utils\Http;
 use App\Utils\Tools;
+use App\Services\VpnPackage\VpnPackage;
 
 
 /**
@@ -166,12 +167,19 @@ class AuthController extends BaseController
         $user->t = 0;
         $user->u = 0;
         $user->d = 0;
-        $user->transfer_enable = Tools::toMB(Config::get('defaultTraffic'));
+        $user->transfer_enable = 0;
+        
         $user->invite_num = Config::get('inviteNum');
         $user->reg_ip = Http::getClientIP();
 //         $user->ref_by = $c->user_id;
 
         if ($user->save()) {
+        	
+        	$amount = Tools::toMB(Config::get('defaultTraffic'));
+        	$duration = Config::get('defaultDuration')*3600;
+        	$startTime = time();
+        	$p = VpnPackage::createNewPackage($user->id, $amount, $duration, $startTime, $startTime + $duration, true);
+        	
             $res['ret'] = 1;
             $res['msg'] = "注册成功";
             

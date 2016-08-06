@@ -7,6 +7,15 @@ use App\Models\User;
 
 class Package extends Model
 {
+	// 0 新创建。比如还未付款时创建。 1 待启用。付款过后即待启用。 2 使用中 3 终止, 4 被merge成功, 5 试用
+	public static $STATUS_NEW = 0;
+	public static $STATUS_READY= 1;
+	public static $STATUS_USING = 2;
+	public static $STATUS_FINISHED = 3;
+	public static $STATUS_MERGED = 4;
+	public static $STATUS_PROBATION = 5;
+	public static $STATUS_USING_PROBATION = 6;
+	
 	protected $table = "vpn_package";
 	
 	protected $casts = [

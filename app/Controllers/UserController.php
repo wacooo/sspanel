@@ -40,7 +40,7 @@ class UserController extends BaseController
             $msg = "在后台修改用户中心公告...";
         }
         $nodes = Node::all();
-        $p = VpnPackage::findUsingPackageForUser($this->user->id);
+        $p = VpnPackage::getUsingOrProbatingPackage($this->user->id);
         return $this->view()->assign('msg', $msg)->assign('nodes', $nodes)->assign('package', $p)->display('user/index.tpl');
     }
 

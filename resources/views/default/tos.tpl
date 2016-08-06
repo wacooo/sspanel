@@ -4,7 +4,7 @@
 <div class="section no-pad-bot" id="index-banner">
 <div class="container">
     <div class="page-header">
-        <h1>用户协议 Terms of Service </h1>
+        <h1>用户协议 </h1>
     </div>
     <p>{$config["appName"]}，以下简称本站。</p>
     <h3>隐私</h3>
@@ -29,7 +29,7 @@
     <h3>其它</h3>
     <p>
     <ul>
-        <li>TOS更新时用户需要遵守最新TOS。</li>
+        <li>用户协议更新时用户需要遵守最新的用户协议</li>
     </ul>
     </p>
 

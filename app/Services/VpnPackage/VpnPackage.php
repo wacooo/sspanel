@@ -4,14 +4,9 @@ namespace App\Services\VpnPackage;
 
 use App\Models\Package;
 use App\Models\User;
+use App\Services\Logger;
 
 class VpnPackage {
-	
-	public static function findUsingPackageForUser($uid) {
-		$p = Package::where('uid', $uid)->where('status', 2);
-		return $p->first();
-
-	}
 	
 	public static function findPackage($pid) {
 		$p = Package::where('id', $pid);
@@ -24,7 +19,7 @@ class VpnPackage {
 		unset($package->next_reset_time);
 		$package->start_time = $originpackage->end_time;
 		$package->end_time = $package->start_time + $secondsToExtend;
-		$package->status = 0;
+		$package->status = Package::$STATUS_NEW;
 		$package->save();
 		return $package;
 	}
@@ -75,14 +70,18 @@ class VpnPackage {
 		return $z;
 	}
 	
-	public static function createNewPackage($uid, $amount, $resetInterval, $startTime, $endTime){
+	public static function createNewPackage($uid, $amount, $resetInterval, $startTime, $endTime, $isProbation = false){
 		$package = new Package();
 		$package->amount = $amount;
 		$package->uid = $uid;
 		$package->reset_interval = $resetInterval;
 		$package->start_time = $startTime;
 		$package->end_time = $endTime;
-		$package->status = 0;
+		if (!$isProbation) {
+			$package->status = Package::$STATUS_NEW;
+		}else {
+			$package->status = Package::$STATUS_PROBATION;
+		}
 		$package->save();
 		return $package;
 	}
@@ -90,20 +89,30 @@ class VpnPackage {
 	public static function preparePackage($pid) {
 		$p = Package::where('id', $pid);
 		if ($p->count() > 0) {
-			$p ->update(array('status' => 1));
+			$p ->update(array('status' => Package::$STATUS_READY));
 		}
 	}
 	
 	public static function stopTimeoutPackages($doReset = true) {
 		$now = time();
-		$packages = Package::where('end_time', '<', $now)->where('status', 2);
-		$packages->update(array('status' => 3));
+// 		$packages = Package::where('end_time', '<', $now)->where('status', Package::$STATUS_USING)->orWhere('status', Package::$STATUS_USING_PROBATION);
+		
+		$packages = Package::where(function ($query) {
+			$query->where('status', Package::$STATUS_USING)
+			->orWhere('status', Package::$STATUS_USING_PROBATION);
+		})->where('end_time', '<', $now);
+		
+		$packages->update(array('status' => Package::$STATUS_FINISHED));
 		if (!$doReset) {
 			return;
 		}
 		foreach ($packages as $package) {
 			try{
-				$user = User::where('id', $package->uid)->firstOrFail();
+				Logger::info("package ".$package->id." is stopped");
+				$user = User::where('id', $package->uid)->first();
+				if ($user == null) {
+					continue;
+				}
 				$user->u = 0;
 				$user->d = 0;
 				$user->transfer_enable = 0;
@@ -116,25 +125,53 @@ class VpnPackage {
 	}
 	
 	public static function getUsingPackage($uid){
-		$usingPackages = Package::where('uid', $uid)->where('status', 2);
-		$usingPackage = $usingPackages->first();
+		$usingPackages = Package::where('uid', $uid)->where('status', Package::$STATUS_USING);
+		return $usingPackages->first();
+	}
+	
+	public static function getUsingOrProbatingPackage($uid) {
+		$usingPackage = Package::where ('uid', $uid)->where ( function ($query) {
+			$query->where ( 'status', Package::$STATUS_USING )->orWhere ( 'status', Package::$STATUS_USING_PROBATION);
+			})->first();
 		return $usingPackage;
 	}
 	
 	public static function enablePendingPackages(){
-		$packages = Package::where('status', '=', 1)->get();
+		$packages = Package::where('status', '=', Package::$STATUS_READY)->orWhere('status', Package::$STATUS_PROBATION)->get();
 		foreach ($packages as $package) {
-			$usingPackages = Package::where('uid', $package->uid)->where('status', 2);
-			$usingPackage = NULL;
-			if ($usingPackages->count() > 0) {
-				$usingPackage = $usingPackages->firstOrFail();
-			}
-			if($usingPackage == NULL || $package->amount != $usingPackage->amount || $package->start_time < time()) {
+			
+			$usingPackage = Package::where('uid', $package->uid)->where(function ($query) {
+				$query->where('status', Package::$STATUS_USING)
+				->orWhere('status', Package::$STATUS_USING_PROBATION);
+			})->first();
+			
+// 			$usingPackage = Package::where('uid', $package->uid)->where('status', Package::$STATUS_USING)->orWhere('status', Package::$STATUS_USING_PROBATION)->first();
+			if ($package->status == Package::$STATUS_PROBATION) {
 				if ($usingPackage != NULL) {
-					$usingPackage->status = 3;
+					$package->status = Package::$STATUS_FINISHED;
+					$package->save();
+					continue;
+				}else {
+					$package->status = Package::$STATUS_USING_PROBATION;
+					$package->next_reset_time = time() + $package->reset_interval;
+					$package->save();
+					$user = User::where('id', $package->uid)->first();
+					if ($user != null) {
+						$user->u = 0;
+						$user->d = 0;
+						$user->transfer_enable = $package->amount;
+						$user->save();
+					}
+					continue;
+				}
+			}
+
+			if($usingPackage == NULL || $usingPackage->status == Package::$STATUS_USING_PROBATION || $package->amount != $usingPackage->amount || $package->start_time < time()) {
+				if ($usingPackage != NULL) {
+					$usingPackage->status = Package::$STATUS_FINISHED;
 					$usingPackage->save();
 				}
-				$package->status = 2;
+				$package->status = Package::$STATUS_USING;
 				$package->next_reset_time = time() + $package->reset_interval;
 				$package->save();
 				$user = User::where('id', $package->uid)->firstOrFail();
@@ -147,7 +184,7 @@ class VpnPackage {
 				if ($package->start_time <= $usingPackage->end_time + 30 && $package->end_time > $usingPackage->end_time) {
 					$usingPackage->end_time = $package->end_time;
 					$usingPackage->save();
-					$package->status = 4;
+					$package->status = Package::$STATUS_MERGED;
 					$package->save();
 				}
 			}
@@ -156,12 +193,20 @@ class VpnPackage {
 	
 	public static function resetTraffics(){
 		$now = time();
-		$packages = Package::where('next_reset_time', '<', $now)->where('status', 2)->get();
+		$packages = Package::where(function ($query) {
+				$query->where('status', Package::$STATUS_USING)
+				->orWhere('status', Package::$STATUS_USING_PROBATION);
+			})->where('next_reset_time', '<', $now)->get();
+		
+// 		$packages = Package::where('next_reset_time', '<', $now)->where('status', Package::$STATUS_USING)->orWhere('status', Package::$STATUS_USING_PROBATION)->get();
 		foreach ($packages as $package) {
 			try{
 				$package->next_reset_time += $package->reset_interval;
 				$package->save();
-				$user = User::where('id', $package->uid)->firstOrFail();
+				$user = User::where('id', $package->uid)->first();
+				if ($user == null) {
+					continue;
+				}
 				$user->u = 0;
 				$user->d = 0;
 				$user->transfer_enable = $package->amount;
