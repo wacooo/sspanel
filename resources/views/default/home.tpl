@@ -31,6 +31,7 @@
 		    <h1 class="animated fadeInDown delay-07s">长颈兔</h1>
 		    <ul class="we-create animated fadeInUp delay-1s">
 		    	<li>支持Shadowsocks，美国/日本/新加坡/台湾/香港/韩国精品服务线路。 手机电脑全平台支持，同时5终端，包年仅需58元。</li>
+		    	<li>注册即可赠送1G流量，免费试用。</li>
 		    </ul>
 		    <a class="link animated fadeInUp delay-1s" href="#service">开始体验</a>
 		</div>
@@ -41,7 +42,7 @@
 	        <ul class="main-nav">
 	        	<li><a href="#header">首页</a></li>
 	            <li><a href="#team">购买</a></li>
-	            <li><a href="#team">教程</a></li>
+	            <li><a href="http://www.godusevpn.mobi/wiki.html">教程</a></li>
 	            <li class="small-logo"><a href="#header"><img src="/assets/public/img/small-logo.png" alt=""></a></li>
 	            <li><a href="/download">客户端下载</a></li>
 	            {if $user->isLogin}
@@ -64,7 +65,7 @@
 	        	<div class="col-lg-4 col-sm-6 wow fadeInLeft delay-05s">
 	            	<div class="service-list">
 	                	<div class="service-list-col1">
-	                    	<i class="fa-paw"></i>
+	                    	<i class="fa-rocket"></i>
 	                    </div>
 	                	<div class="service-list-col2">
 	                        <h3>智能加速</h3>
@@ -74,7 +75,7 @@
 
 	                <div class="service-list">
 	                	<div class="service-list-col1">
-	                    	<i class="fa-gear"></i>
+	                    	<i class="fa-youtube-play"></i>
 	                    </div>
 	                	<div class="service-list-col2">
 	                        <h3>跨国追剧</h3>
@@ -83,7 +84,7 @@
 	                </div>
 	                <div class="service-list">
 	                	<div class="service-list-col1">
-	                    	<i class="fa-apple"></i>
+	                    	<i class="fa-users"></i>
 	                    </div>
 	                	<div class="service-list-col2">
 	                        <h3>社交</h3>
@@ -92,7 +93,7 @@
 	                </div>
 	                <div class="service-list">
 	                	<div class="service-list-col1">
-	                    	<i class="fa-medkit"></i>
+	                    	<i class="fa-book"></i>
 	                    </div>
 	                	<div class="service-list-col2">
 	                        <h3>科研</h3>
@@ -101,7 +102,7 @@
 	                </div>
 	                <div class="service-list">
 	                	<div class="service-list-col1">
-	                    	<i class="fa-apple"></i>
+	                    	<i class="fa-credit-card-alt"></i>
 	                    </div>
 	                    <div class="service-list-col2">
 	                        <h3>外贸</h3>
@@ -162,7 +163,7 @@
 	<section class="main-section team" id="team"><!--main-section team-start-->
 		<div class="container">
 	        <h2>套餐选购</h2>
-	        <h6>新注册用户将有1小时50M的免费流量可用，欢迎选购适合您的套餐</h6>
+	        <h6>新注册可以免费使用1G流量2小时，欢迎选购适合您的套餐</h6>
 	        <div class="team-leader-block clearfix">
 	        	<form id="pt1" action="/buy" method="post" onclick="submit();">
 	        	<input name="amount" type="text" hidden="hidden" value="15" />
@@ -230,14 +231,13 @@
             </div>
         	<div class="col-lg-4 text-center wow fadeInUp delay-05s">
             	<i class="fa fa-envelope fa-3x sr-contact"></i>
-                <p><a href="mailto:support@mail.changjinglu.com">发送邮件</a></p>
+                <p><a href="mailto:support@changjingtu.com">发送邮件</a></p>
             </div>
         </div>
 	</section>
 	</div>
 	<footer class="footer">
 	    <div class="container">
-	        <div class="footer-logo"><a href="#"><img src="/assets/public/img/footer-logo.png" alt=""></a></div>
 	        <span class="copyright">京ICP备14029588号-6</span>
 	    </div>
 	    <!-- 
