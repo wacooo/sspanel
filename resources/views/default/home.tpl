@@ -203,9 +203,21 @@
 	    );
 	    wow.init();
 	  
+	  var $container = $('.portfolioContainer'),
+      $body = $('body'),
+      colW = 375,
+      columns = null;
+  
+	  $container.isotope({
+	    // disable window resizing
+	    resizable: true,
+	    masonry: {
+	      columnWidth: colW
+	    }
+	  });
 	  $(window).smartresize(function(){
 	    // check if columns has changed
-	    var currentColumns = Math.floor( ( $(window).width() -30 ) / colW );
+	    var currentColumns = Math.floor( ( $body.width() -30 ) / colW );
 	    if ( currentColumns !== columns ) {
 	      // set new column count
 	      columns = currentColumns;
