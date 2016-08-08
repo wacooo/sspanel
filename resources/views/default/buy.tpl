@@ -68,8 +68,8 @@
 						</select>
 					</div>
 					<input id="amount" name="amount" hidden="hidden" value={$amount} />
-					<br/>
 					<div class="col-md-12">
+						<br/>
 						<button type="submit" class="btn btn-danger" type="button">立即购买</button>
 					</div>
 				</form>
