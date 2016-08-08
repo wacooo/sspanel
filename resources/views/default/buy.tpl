@@ -1,40 +1,57 @@
 {include file='header.tpl'}
 {include file='nav.tpl'}
 
-<div class="container">
-    <br><br>
-
-	<div class="section">
-	
-	<div class="row">
-	  <div class="col m8">
-		<div class="calculator-box" style="display: block;"><div class="calculator-container" style="">
-			  <div class="screen-block">
-			    <div id="J_Screen" class="screen">
-			      <div class="left-box">
-			        <div class="product-name"><span>套餐价格</span></div>
-			      </div>
-			      <div class="right-box const-empty">
-			        <div class="price-unit">元</div>
-			        <div class="price-box"><div class="price-content">
-					    <span class="number number-t"></span>  
-					    <span class="number number-t"></span>  
-					    <span class="number number-t"></span>  
-					    <span class="number number-0"></span>  
-					    <span class="number number-d"></span>  
-					    <span class="number number-0"></span>  
-			   		</div>
-			       </div>
-		         <div class="const-price-box"></div>
-		        </div>
-		       </div>
-		     </div>  
-		   </div>
-		 </div>
-	</div>
-	</div>	
-	
+<section class="main-section" id="buy">
+	<div class="container">
+		<h2>选择套餐</h2>
 		<div class="row">
+<<<<<<< HEAD
+			<div class="col-md-6 col-md-offset-3">
+				<div class="calculator-box">
+					<div class="calculator-container" style="">
+						<div class="screen-block">
+							<div id="J_Screen" class="screen">
+							  <div class="left-box">
+							    <div class="product-name"><span>套餐价格</span></div>
+							  </div>
+							  <div class="right-box const-empty">
+							    <div class="price-unit">元</div>
+							    <div class="price-box"><div class="price-content">
+								    <span class="number number-t"></span>  
+								    <span class="number number-t"></span>  
+								    <span class="number number-t"></span>  
+								    <span class="number number-0"></span>  
+								    <span class="number number-d"></span>  
+								    <span class="number number-0"></span>  
+									</div>
+							   </div>
+							 <div class="const-price-box"></div>
+							</div>
+							</div>						
+						</div>  
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6 col-md-offset-3">
+    			<div class="buy-text-gray">已优惠 <span id="discount" class="red-text">0元</span></div>
+				<div class="red-text">您选择的套餐每月有{$amount}G流量</div>
+				<br>
+			  	<div class="buy-text-gray">请选择您购买的月数：</div>
+		  	</div>
+		  	<div class="input-field col-md-6 col-md-offset-3">
+					<form id="payForm" action="/order/pay" method="post" target="_blank">
+						<select id="month" name="month" class="form-control">
+						  <option value="1" selected>续约1个月</option>
+						  <option value="3">续约3个月</option>
+						  <option value="6">续约6个月</option>
+						  <option value="12">续约12个月</option>
+						</select>
+						<input id="amount" name="amount" hidden="hidden" value={$amount} />
+						<br/>
+						<button type="submit" class="btn btn-danger" type="button">立即购买</button>
+					</form>
+				</div>
+=======
 			<h5>已优惠 <span id="discount" class="red-text">0元</span></h5>
 			<br>
 		  	<h5>请选择您购买的每月流量和月数：</h5>
@@ -78,14 +95,10 @@
 					<a id="buynow" class="waves-effect waves-light btn red">立即购买</a>
 				</p>
 			</div> 		
+>>>>>>> origin/master
 		</div>
 	</div>
-   <div class="section">
-	   <br><br><br><br><br><br>
-    </div>
-</div>
-
-{include file='footer.tpl'}
+</section>
 
 <script type="text/javascript">
 $(document).ready(function(){
@@ -148,13 +161,9 @@ $(document).ready(function(){
 		var discount = prices[r*mons.length] * y - p;		
 		$("#discount").text(discount+"元");
 		displayPrice(p);
-	}
-	
-	$("#buynow").click(function(){
-		$("#payForm").submit();
-	});
-	
+	}	
 	update();
 });
 
 </script>
+{include file='footer.tpl'}
