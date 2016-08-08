@@ -38,33 +38,40 @@
 			  	<div class="buy-text-gray">请选择您购买的每月流量和月数：</div>
 		  	</div>
 		  	<div class="input-field col-md-6 col-md-offset-3">
-				<form id="payForm" action="/order/pay" method="post" target="_blank">
-					<select id="amount" name="amount" class="form-control">
-				      <option value="15" 
-				      {if $amount==15 }
-				      selected
-				      {/if}
-				      >每月15G</option>
-				      <option value="50"
-				      {if $amount==50 }
-				      selected
-				      {/if}
-				      >每月50G</option>
-				      <option value="100"
-				      {if $amount==100 }
-				      selected
-				      {/if}
-				      >每月100G</option>
-				    </select>
-					<select id="month" name="month" class="form-control">
-					  <option value="1" selected>续约1个月</option>
-					  <option value="3">续约3个月</option>
-					  <option value="6">续约6个月</option>
-					  <option value="12">续约12个月</option>
-					</select>
+				<form id="payForm" action="/order/pay" method="post" target="_blank" class="row">
+					<br/>
+					<div class="col-md-6">
+						<select id="amount" name="amount" class="form-control">
+					      <option value="15" 
+					      {if $amount==15 }
+					      selected
+					      {/if}
+					      >每月15G</option>
+					      <option value="50"
+					      {if $amount==50 }
+					      selected
+					      {/if}
+					      >每月50G</option>
+					      <option value="100"
+					      {if $amount==100 }
+					      selected
+					      {/if}
+					      >每月100G</option>
+					    </select>
+					</div>
+					<div class="col-md-6">
+						<select id="month" name="month" class="form-control">
+						  <option value="1" selected>续约1个月</option>
+						  <option value="3">续约3个月</option>
+						  <option value="6">续约6个月</option>
+						  <option value="12">续约12个月</option>
+						</select>
+					</div>
 					<input id="amount" name="amount" hidden="hidden" value={$amount} />
 					<br/>
-					<button type="submit" class="btn btn-danger" type="button">立即购买</button>
+					<div class="col-md-12">
+						<button type="submit" class="btn btn-danger" type="button">立即购买</button>
+					</div>
 				</form>
 			</div>
 		</div>
