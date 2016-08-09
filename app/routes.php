@@ -98,6 +98,9 @@ $app->group('/order', function(){
 // Callback
 $app->group('/system',function(){
 	$this->get('/callback', 'App\Controllers\OrderController:callback');
+	$this->post('/callback', 'App\Controllers\OrderController:callback');
+	$this->get('/return', 'App\Controllers\OrderController:return');
+	$this->post('/return', 'App\Controllers\OrderController:return');
 });
 
 // Admin

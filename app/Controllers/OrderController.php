@@ -13,7 +13,7 @@ use App\Utils\Tools;
 use App\Models\User;
 use App\Utils\Helper;
 
-class OrderController extends UserController
+class OrderController extends BaseController
 {
 	protected $seller;
 	protected $partner;
@@ -34,16 +34,24 @@ class OrderController extends UserController
 		$this->pagesize = 10;
 	}
 	
-	private function payWithPackage($request, $response, $package){
+	private function payWithPackage($request, $response, $package, $isNewBuy = true){
 
 		// create order
 		$price = VpnPackage::computePrice($package);
 		$amount = $package->amount;
 		$month = round(($package->end_time - $package->start_time) / 24 / 3600 / 31);
 		
-		$subject = "购买套餐：".$month."个月,月流量".Tools::flowAutoShow($amount);
-		$total_fee = $price;
+		if ($isNewBuy) {
+			$subject = "购买套餐：".$month."个月,月流量".Tools::flowAutoShow($amount);
+		}else {
+			$subject = "续约套餐：".$month."个月,月流量".Tools::flowAutoShow($amount);
+		}
 		$orderid = orderid();
+		
+		$user = Auth::getUser();
+		if ($user->isAdmin()){
+			$price = 0.01;
+		}
 		
 		$o = new Order();
 		$o->orderid = $orderid;
@@ -61,7 +69,7 @@ class OrderController extends UserController
 				"user_seller"  => $this->seller,
 				"out_order_no"	=> $orderid,
 				"subject"	=> $subject,
-				"total_fee"	=> $total_fee,
+				"total_fee"	=> $price,
 				"notify_url"	=> $this->notifyURL,
 				"return_url"	=> $this->returnURL
 		);
@@ -126,7 +134,7 @@ class OrderController extends UserController
 			return $response->getBody()->write(json_encode($rs));
 		}
 		
-		if ($amount < 10 || $month < 1) {
+		if ($month < 1) {
 			$rs['msg'] = "参数值不合预期";
 			return $response->getBody()->write(json_encode($rs));
 		}
@@ -165,13 +173,23 @@ class OrderController extends UserController
 		// create package
 		$u = Auth::getUser();
 		$m = $request->getParam("month");
+		$a = $request->getParam("amount");
 		$p = VpnPackage::getUsingPackage($u->id);
-		if (empty($p) || empty($m)) {
+		if (empty($p)) {
+			$rs['msg'] = "无正在使用的套餐，无法续约。";
+			return $response->getBody()->write(json_encode($rs));
+		}
+		if (empty($m) || empty($a)) {
 			$rs['msg'] = "参数不全";
 			return $response->getBody()->write(json_encode($rs));
 		}
+		$inputa = $a * 1024 * 1024 * 1024;
+		if ($p->amount != $inputa || $m < 1) {
+			$rs['msg'] = "参数取值不合法";
+			return $response->getBody()->write(json_encode($rs));
+		}
 		$np = VpnPackage::createExtendedPackage($p, $m*31*24*3600);
-		return $this->payWithPackage($request, $response, $np);
+		return $this->payWithPackage($request, $response, $np, false);
 	}
 	
 	public function callback($request, $response, $args){
@@ -199,7 +217,7 @@ class OrderController extends UserController
 			Logger::info("Pay Callback - Validated ".$orderid);
 			if($request->getParam('trade_status')== "TRADE_SUCCESS"){
 				Logger::info("Pay Callback - Success ".$orderid);
-				if ($o->status == 0) {
+				if ($o->status != 1) {
 					$cprice = (float)$request->getParam('total_fee');
 					VpnPackage::preparePackage($o->pid);
 					if (abs($o->price - $cprice) < 0.1) {
@@ -208,6 +226,7 @@ class OrderController extends UserController
 					}else{
 						$o->status = 1;
 						$o->status_desc = "金额不匹配. 原金额".$o->price.". 支付金额：".$cprice;
+						Logger::warning("Pay Callback - Amount not match ".$orderid);
 					}
 					$o->save();
 					return $this->view()->display('order/success.tpl');
@@ -218,12 +237,23 @@ class OrderController extends UserController
 					$o->status = 2;
 					$o->status_desc = "支付失败";
 				}
-			}		
+			}
 		}else {
 			Logger::info("Pay Callback - Failed to validate ".$orderid);
 		}
 		$o->save();
 		return $this->view()->display('order/fail.tpl');
+	}
+	
+	public function return($request, $response, $args) {
+		$orderid = $request->getParam('out_order_no');
+		if ($request->getParam ( 'trade_status' ) == "TRADE_SUCCESS") {
+			Logger::info ( "Return - Success " . $orderid );
+			return $this->view ()->display ( 'order/success.tpl' );
+		} else {
+			Logger::info ( "Return - Fail " . $orderid );
+			return $this->view ()->display ( 'order/fail.tpl' );
+		}
 	}
 	
 	public function listAll($request, $response, $args) {

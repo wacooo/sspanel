@@ -33,7 +33,6 @@
 			</div>
 			<div class="col-md-6 col-md-offset-3">
     			<div class="buy-text-gray">已优惠 <span id="discount" class="red-text">0元</span></div>
-				<div class="red-text">您选择的套餐每月有{$amount}G流量</div>
 				<br>
 			  	<div class="buy-text-gray">请选择您购买的每月流量和月数：</div>
 		  	</div>
@@ -61,13 +60,12 @@
 					</div>
 					<div class="col-md-6">
 						<select id="month" name="month" class="form-control">
-						  <option value="1" selected>续约1个月</option>
-						  <option value="3">续约3个月</option>
-						  <option value="6">续约6个月</option>
-						  <option value="12">续约12个月</option>
+						  <option value="1" selected>购买1个月</option>
+						  <option value="3">购买3个月</option>
+						  <option value="6">购买6个月</option>
+						  <option value="12">购买12个月</option>
 						</select>
 					</div>
-					<input id="amount" name="amount" hidden="hidden" value={$amount} />
 					<div class="col-md-12">
 						<br/>
 						<button type="submit" class="btn btn-danger" type="button">立即购买</button>
