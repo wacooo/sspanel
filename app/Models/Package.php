@@ -60,7 +60,7 @@ class Package extends Model
 			case 3:
 				$status = "已结束";
 				break;
-			case 3:
+			case 4:
 				$status = "被合并";
 				break;
 		}
