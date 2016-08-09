@@ -70,6 +70,13 @@ class OrderController extends UserController
 		return $response->getBody()->write($html_text);
 	}
 	
+	private function isAmountLegal($amount){
+		if ($amount != 15 && $amount != 50 && $amount != 100) {
+			return false;
+		}
+		return true;
+	}
+	
 	public function payOrder($request, $response, $args){
 		$orderid = $request->getParam('orderid');
 		$o = Order::where("orderid", $orderid)->first();
@@ -113,6 +120,12 @@ class OrderController extends UserController
 		}
 		$amount = (int)$a;
 		$month = (int)$m;
+
+		if (!$this->isAmountLegal($amount)){
+			$rs['msg'] = "非法的流量套餐";
+			return $response->getBody()->write(json_encode($rs));
+		}
+		
 		if ($amount < 10 || $month < 1) {
 			$rs['msg'] = "参数值不合预期";
 			return $response->getBody()->write(json_encode($rs));
