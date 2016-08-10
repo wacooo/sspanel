@@ -776,6 +776,10 @@ border: 2px solid #fff;
 	color: #7cc576 !important;
 }
 
+.res-nav_click i{
+	font-style:normal;
+}
+
 .portfolioContainer{
 	max-width: 1140px;
 }
