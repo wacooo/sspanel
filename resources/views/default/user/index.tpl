@@ -31,7 +31,10 @@
                             <dd>{$user->email}</dd>
                         </dl>
       					<p align="center">
-				  			<a style="margin-top:20px;" href="http://www.godusevpn.mobi/wiki.html" target="_blank">
+      						<a style="margin-top:20px; margin-right:40px;" href="/wiki" target="_blank">
+				  				<button id="ss-pwd-update" style="width:150px;" class="btn btn-primary">软件下载</button>
+				  			</a>
+				  			<a style="margin-top:20px;" href="/wiki" target="_blank">
 				  				<button id="ss-pwd-update" style="width:150px;" class="btn btn-primary">如何使用</button>
 				  			</a>
 						</p>
