@@ -3,7 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, maximum-scale=1">
-<title>{$config["appName"]}</title>
+<title>{$config["appName"]}-可以免费使用的网络加速器.现支持美国，欧洲，亚洲多节点网络加速</title>
+<meta name="keywords" content="长颈兔, 长颈兔加速器, 长颈兔VPN,免费加速器，游戏加速器,手机上网代理,美国代理,新加坡代理,亚洲代理,vpn账号,vpn怎么用,收费vpn,付费vpn">     
+<meta name="description" content="长颈兔专注于提供稳定可靠的网络加速代理服务,包年只需58元,美国/亚洲/欧洲优质线路,windows/iOS/Mac/Android全平台完美支持.">
+
 <link rel="shortcut icon" href="favicon.ico" type="img/x-icon"/>
 
 <!-- Bootstrap Core CSS -->

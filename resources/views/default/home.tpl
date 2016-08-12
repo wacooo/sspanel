@@ -6,7 +6,7 @@
 		    </figure>	
 		    <h1 class="animated fadeInDown delay-07s">长颈兔</h1>
 		    <ul class="we-create animated fadeInUp delay-1s">
-		    	<li>支持Shadowsocks，美国/日本/新加坡/台湾/香港/韩国精品服务线路。 手机电脑全平台支持，同时5终端，包年仅需58元。</li>
+		    	<li>支持Shadowsocks，美国/欧洲/亚洲精品服务线路。 手机电脑全平台支持，同时5终端，包年仅需58元。</li>
 		    	<li>注册即可赠送1G流量，免费试用。</li>
 		    </ul>
 		    <a class="link animated fadeInUp delay-1s" href="/#service">开始体验</a>
@@ -129,7 +129,7 @@
 	            		<h4 class="wow fadeInDown delay-03s">轻型套餐</h4>
 	            		<h3 class="wow fadeInDown delay-03s">10元/月</h3>
 	            		<h3 class="wow fadeInDown delay-03s">15G流量/月</h3>
-	            		<h3 class="wow fadeInDown delay-03s">美国/新加坡/日本等</h3>
+	            		<h3 class="wow fadeInDown delay-03s">美国/欧洲/亚洲</h3>
 	            		<h3 class="wow fadeInDown delay-03s">同时支持5终端</h3>
 	            		<h3 class="wow fadeInDown delay-03s">半年35元</h3>
 	            		<h3 class="wow fadeInDown delay-03s">包年58元</h3>
@@ -144,7 +144,7 @@
 	            		<h4 class="wow fadeInDown delay-06s">普通套餐</h4>
 	            		<h3 class="wow fadeInDown delay-06s">15元/月</h3>
 	            		<h3 class="wow fadeInDown delay-06s">50G流量/月</h3>
-	            		<h3 class="wow fadeInDown delay-06s">美国/新加坡/日本等</h3>
+	            		<h3 class="wow fadeInDown delay-06s">美国/欧洲/亚洲</h3>
 	            		<h3 class="wow fadeInDown delay-06s">同时支持5终端</h3>
 	            		<h3 class="wow fadeInDown delay-06s">半年45元</h3>
 	            		<h3 class="wow fadeInDown delay-06s">包年78元</h3>
@@ -159,7 +159,7 @@
 	            		<h4 class="wow fadeInDown delay-09s">高级套餐</h4>
 	            		<h3 class="wow fadeInDown delay-09s">20元/月</h3>
 	            		<h3 class="wow fadeInDown delay-09s">100G流量/月</h3>
-	            		<h3 class="wow fadeInDown delay-09s">美国/新加坡/日本等</h3>
+	            		<h3 class="wow fadeInDown delay-09s">美国/欧洲/亚洲</h3>
 	            		<h3 class="wow fadeInDown delay-09s">同时支持5终端</h3>
 	            		<h3 class="wow fadeInDown delay-09s">半年60元</h3>
 	            		<h3 class="wow fadeInDown delay-09s">包年108元</h3>
