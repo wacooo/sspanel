@@ -77,6 +77,16 @@ class Tools
         }
         return $char;
     }
+    
+    public static function genRandomDigits($length = 0) {
+    	// 密码字符集，可任意添加你需要的字符
+    	$chars = '0123456789';
+    	$char = '';
+    	for ($i = 0; $i < $length; $i++) {
+    		$char .= $chars[mt_rand(0, strlen($chars) - 1)];
+    	}
+    	return $char;
+    }
 
     /**
      * @return string

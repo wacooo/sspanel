@@ -128,5 +128,4 @@ class AdminController extends UserController
         $res['msg'] = "更新成功";
         return $response->getBody()->write(json_encode($res));
     }
-
 }

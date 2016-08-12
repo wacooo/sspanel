@@ -136,6 +136,8 @@ $app->group('/admin', function () {
     $this->put('/user/{id}', 'App\Controllers\Admin\UserController:update');
     $this->delete('/user/{id}', 'App\Controllers\Admin\UserController:delete');
     $this->get('/user/{id}/delete', 'App\Controllers\Admin\UserController:deleteGet');
+    // create user for free test
+    $this->post('/user/create_free_account', 'App\Controllers\Admin\UserController:createFreeAccount');
 
     // Test
     $this->get('/test/sendmail', 'App\Controllers\Admin\TestController:sendMail');

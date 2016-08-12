@@ -57,7 +57,8 @@
                                         <label class="col-sm-3 control-label">是否管理员</label>
 
                                         <div class="col-sm-9">
-                                            <select class="form-control" id="is_admin">
+                                        	<input id="is_admin" hidden="true" value="{$user->is_admin}" />
+                                            <select class="form-control" disabled="disabled">
                                                 <option value="0" {if $user->is_admin==0}selected="selected"{/if}>
                                                     否
                                                 </option>

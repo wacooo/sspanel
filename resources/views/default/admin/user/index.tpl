@@ -8,7 +8,10 @@
             用户列表
             <small>User List</small>
         </h1>
-    </section>
+		<p align="center">
+			<button id="create-free-account" style="width: 150px;" class="btn btn-primary">创建试用账号</button>
+		</p>
+	</section>
 
     <!-- Main content -->
     <section class="content">
@@ -64,7 +67,19 @@
 
 <script>
     $(document).ready(function(){
-        function delete(){
+    	
+        $("#create-free-account").click(function(){
+        	$.post("/admin/user/create_free_account", {}, function(res) {
+        		if (res != null && res['ret'] != 0) {
+        			window.location.href = "/admin/user"
+        		}else {
+        			alert(res['msg']);	
+        		}
+        		
+        	});
+        });
+    	
+        function remove(){
             $.ajax({
                 type:"DELETE",
                 url:"/admin/user/",
@@ -97,7 +112,7 @@
             }
         });
         $("#delete").click(function(){
-            delete();
+            remove();
         });
         $("#ok-close").click(function(){
             $("#msg-success").hide(100);
