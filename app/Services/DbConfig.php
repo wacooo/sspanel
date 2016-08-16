@@ -15,7 +15,10 @@ class DbConfig
     public static function get($key)
     {
         try {
-            $c = ConfigModel::where('key', $key)->firstOrFail();
+            $c = ConfigModel::where('key', $key)->first();
+            if ($c == null) {
+            	return null;
+            }
             return $c->value;
         } catch (ModelNotFoundException $e) {
             return null;

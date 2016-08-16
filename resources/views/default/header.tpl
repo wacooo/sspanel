@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, maximum-scale=1">
-<title>{$config["appName"]}</title>
-<meta name="keywords" content='{$config["appKeywords"]}'>     
-<meta name="description" content='{$config["appDescription"]}'>
+<title>{$config["appTitle"]}</title>
+<meta name="keywords" content="{$config["appKeywords"]}">     
+<meta name="description" content="{$config["appDescription"]}">
 
 <link rel="shortcut icon" href="favicon.ico" type="img/x-icon"/>
 

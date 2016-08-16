@@ -46,7 +46,6 @@
                                 <textarea class="form-control" id="analytics-code" rows="3"
                                           placeholder="Enter ...">{$conf['analytics-code']}</textarea>
                             </div>
-
                             <div class="form-group">
                                 <label>邀请页公告</label>
                                 <textarea class="form-control" id="home-code" rows="3"
@@ -81,6 +80,27 @@
                     <div class="box-header">
                         <h3 class="box-title">其他信息</h3>
                     </div>
+                    <div class="box-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <label>网站Title</label>
+                                <textarea class="form-control" id="app-title" rows="3"
+                                          placeholder="Enter ...">{$conf['app-title']}</textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>关键词</label>
+                                <textarea class="form-control" id="app-keywords" rows="3"
+                                          placeholder="Enter ...">{$conf['app-keywords']}</textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>description</label>
+                                <textarea class="form-control" id="app-description" rows="3"
+                                          placeholder="Enter ...">{$conf['app-description']}</textarea>
+                            </div>
+                        </form>
+                    </div>
                     <div class="box-footer">
                     </div>
                 </div>
@@ -104,7 +124,10 @@
                     homeCode: $("#home-code").val(),
                     appName: $("#app-name").val(),
                     userIndex: $("#user-index").val(),
-                    userNode: $("#user-node").val()
+                    userNode: $("#user-node").val(),
+                    appTitle: $("#app-title").val(),
+                    appKeywords: $("#app-keywords").val(),
+                    appDescription: $("#app-description").val()
                 },
                 success: function (data) {
                     if (data.ret) {

@@ -10,13 +10,24 @@ class Config extends PongtanConfig
     public static function getPublicConfig()
     {
         return [
-            "appName" => self::getAppName(),
+            "appName" => self::getAppValue("app-name"),
+        	"appTitle" => self::getAppValue("app-title"),
+        	"appKeywords" => self::getAppValue("app-keywords"),
+        	"appDescription" => self::getAppValue("app-description"),
             "version" => self::get("version"),
             "baseUrl" => self::get("baseUrl"),
             "checkinTime" => self::get("checkinTime"),
             "checkinMin" => self::get("checkinMin"),
             "checkinMax" => self::get("checkinMax"),
         ];
+    }
+    
+    public static function getAppValue($key) {
+    	$appValue = DbConfig::get($key);
+    	if ($appValue == null || $appValue == "") {
+    		return "";
+    	}
+    	return $appValue;
     }
 
     public static function getAppName()

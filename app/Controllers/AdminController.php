@@ -104,10 +104,13 @@ class AdminController extends UserController
     {
         $conf = [
             "app-name" => DbConfig::get('app-name'),
+        	"app-title" => DbConfig::get('app-title'),
+        	"app-keywords" => DbConfig::get('app-keywords'),
+        	"app-description" => DbConfig::get('app-description'),
             "home-code" => DbConfig::get('home-code'),
             "analytics-code" => DbConfig::get('analytics-code'),
             "user-index" => DbConfig::get('user-index'),
-            "user-node" => DbConfig::get('user-node'),
+            "user-node" => DbConfig::get('user-node')
         ];
         return $this->view()->assign('conf', $conf)->display('admin/config.tpl');
     }
@@ -120,6 +123,9 @@ class AdminController extends UserController
             "app-name" => $request->getParam('appName'),
             "user-index" => $request->getParam('userIndex'),
             "user-node" => $request->getParam('userNode'),
+        	"app-title" => $request->getParam('appTitle'),
+        	"app-keywords" => $request->getParam('appKeywords'),
+        	"app-description" => $request->getParam('appDescription')
         ];
         foreach ($config as $key => $value) {
             DbConfig::set($key, $value);
