@@ -3,7 +3,9 @@
         <ul class="main-nav">
         	<li><a href="/#header">首页</a></li>
             <li><a href="/#team">购买</a></li>
+            <li><a href="/wiki/index.php">下载</a></li>
             <li class="small-logo"><a href="/#header"><img src="/assets/public/img/small-logo.png" alt=""></a></li>
+            <li><a href="/wiki/index.php">教程</a></li>
             {if $user->isLogin}
                 <li><a href="/user">用户中心</a></li>
                 <li><a href="/user/logout">退出</a></li>

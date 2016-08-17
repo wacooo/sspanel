@@ -2,6 +2,5 @@ User-agent: *
 Disallow: /user
 Disallow: /admin
 Disallow: /api
-Disallow: /wiki
 Disallow: /password
 Disallow: /auth
