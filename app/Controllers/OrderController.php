@@ -34,10 +34,14 @@ class OrderController extends BaseController
 		$this->pagesize = 10;
 	}
 	
-	private function payWithPackage($request, $response, $package, $isNewBuy = true){
+	private function payWithPackage($request, $response, $package, $isNewBuy = true, $priceHint = -1){
 
 		// create order
-		$price = VpnPackage::computePrice($package);
+		if ($priceHint > 0) {
+			$price = $priceHint;
+		}else {
+			$price = VpnPackage::computePrice($package);
+		}
 		$amount = $package->amount;
 		$month = round(($package->end_time - $package->start_time) / 24 / 3600 / 31);
 		
@@ -160,6 +164,19 @@ class OrderController extends BaseController
 		return $this->view()->assign("amount", $amount)->display('buy.tpl');
 	}
 	
+	public function tuan($request, $response, $args)
+	{
+		$u = Auth::getUser();
+		if ($u != null) {
+			$p = VpnPackage::getUsingPackage($u->id);
+			if ($p != null) {
+				return $this->redirect($response, "/order/renew");
+			}
+		}
+		$amount = $request->getParam("amount");
+		return $this->view()->assign("amount", $amount)->display('tuan.tpl');
+	}
+	
 	public function renew($request, $response, $args){
 		$u = Auth::getUser();
 		$p = VpnPackage::getUsingPackage($u->id);
@@ -167,6 +184,49 @@ class OrderController extends BaseController
 			return $this->redirect($response, "/order/buy");
 		}
 		return $this->view()->assign("amount", $p->amount/1024/1024/1024)->display('order/renew.tpl');
+	}
+	
+	public function payTuan($request, $response, $args) {
+		$u = Auth::getUser();
+		$op = VpnPackage::getUsingPackage($u->id);
+		if ($op != null) {
+			$rs['ret'] = 0;
+			$rs['msg'] = "已经有一个正在使用的套餐,无法购买.";
+			return $response->getBody()->write(json_encode($rs));
+		}
+		
+		// create package
+		$a = $request->getParam("amount");
+		$m = $request->getParam("month");
+		if (empty($a) || empty($m)) {
+			$rs['ret'] = 0;
+			$rs['msg'] = "参数不全";
+			return $response->getBody()->write(json_encode($rs));
+		}
+		$amount = (int)$a;
+		$month = (int)$m;
+		
+		if (!$this->isAmountLegal($amount)){
+			$rs['msg'] = "非法的流量套餐";
+			return $response->getBody()->write(json_encode($rs));
+		}
+		
+		if ($month < 1) {
+			$rs['msg'] = "参数值不合预期";
+			return $response->getBody()->write(json_encode($rs));
+		}
+		
+		$startTime = time();
+		$endTime = $startTime + $month*31*24*3600;
+		$user = Auth::getUser();
+		$p = VpnPackage::createNewPackage($user->id, $amount*1024*1024*1024, 3600*24*31, $startTime, $endTime);
+		
+		$price = 100;
+		if ($a == 100 && $m == 12) {
+			$price = 58;
+		}
+		
+		return $this->payWithPackage($request, $response, $p, true, $price);
 	}
 	
 	public function payRenew($request, $response, $args){

@@ -84,6 +84,7 @@ $app->group('/password', function () {
 $app->group('/order', function(){
 	$this->post('/pay', 'App\Controllers\OrderController:pay');
 	$this->post('/pay_renew', 'App\Controllers\OrderController:payRenew');
+	$this->post('/pay_tuan', 'App\Controllers\OrderController:payTuan');
 	$this->get('/payorder', 'App\Controllers\OrderController:payOrder');
 	$this->get('/list', 'App\Controllers\OrderController:list');
 	$this->get('/renew', 'App\Controllers\OrderController:renew');
@@ -92,6 +93,7 @@ $app->group('/order', function(){
 $app->group('/order', function(){
 	$this->post('/buy', 'App\Controllers\OrderController:buy');
 	$this->get('/buy', 'App\Controllers\OrderController:buy');
+	$this->get('/tuan', 'App\Controllers\OrderController:tuan');
 });
 
 
