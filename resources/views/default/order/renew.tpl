@@ -1,5 +1,4 @@
 {include file='header.tpl'}
-{include file='nav.tpl'}
 
 <section class="main-section" id="buy">
 <div class="container">

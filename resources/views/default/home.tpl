@@ -1,18 +1,4 @@
 {include file='header.tpl'}
-	<header class="header" id="header" style="overflow:hidden;"><!--header-start-->
-		<div class="container">
-			<figure class="logo animated fadeInDown delay-07s">
-		    	<a href="#"><img src="/assets/public/img/logo.png" alt=""></a>	
-		    </figure>	
-		    <h1 class="animated fadeInDown delay-07s">长颈兔</h1>
-		    <ul class="we-create animated fadeInUp delay-1s">
-		    	<li>支持Shadowsocks，美国/欧洲/亚洲精品服务线路。 手机电脑全平台支持，同时5终端，包年仅需58元。</li>
-		    	<li>注册即可赠送1G流量，免费试用。</li>
-		    </ul>
-		    <a class="link animated fadeInUp delay-1s" href="/#service">开始体验</a>
-		</div>
-	</header><!--header-end-->
-{include file='nav.tpl'}
 
 	<section class="main-section" id="service">
 		<div class="container">

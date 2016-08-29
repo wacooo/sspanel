@@ -1,5 +1,4 @@
 {include file='header.tpl'}
-{include file='nav.tpl'}
 <!-- Begin page content -->
 <div class="section no-pad-bot" id="index-banner">
 <div class="container">

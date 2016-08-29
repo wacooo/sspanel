@@ -33,3 +33,21 @@
     <script src="http://cdn.bootcss.com/jquery.isotope/1.5.25/jquery.isotope.min.js"></script>
     <script src="http://cdn.bootcss.com/wow/1.1.2/wow.min.js"></script>
     <script src="http://cdn.bootcss.com/classie/1.0.1/classie.min.js"></script>
+
+    <nav class="main-nav-outer" id="test"><!--main-nav-start-->
+		<div class="container">
+	        <ul class="main-nav">
+	            <li><a href="/#team">购买</a></li>
+	            <li><a href="/wiki/index.php">教程/下载</a></li>
+	            <li class="small-logo"><a href="/"><img src="/assets/public/img/small-logo.png" alt=""></a></li>
+	            {if $user->isLogin}
+	                <li><a href="/user">用户中心</a></li>
+	                <li><a href="/user/logout">退出</a></li>
+	            {else}
+	                <li><a href="/auth/login">登录</a></li>
+	                <li><a href="/auth/register">注册</a></li>
+	            {/if}
+	        </ul>
+	        <a class="res-nav_click" href="#"><i class="fa-bars"></i></a>
+	    </div>
+	</nav><!--main-nav-end-->
