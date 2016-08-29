@@ -67,8 +67,8 @@ $app->group('/auth', function () {
     // $this->get('/login', 'App\Controllers\AuthController:login');
 	$this->get('/login', 'App\Controllers\AuthController:internallogin');
     $this->post('/login', 'App\Controllers\AuthController:loginHandle');
-    // $this->get('/register', 'App\Controllers\AuthController:register');
-    // $this->post('/register', 'App\Controllers\AuthController:registerHandle');
+    $this->get('/register001', 'App\Controllers\AuthController:register');
+    $this->post('/register', 'App\Controllers\AuthController:registerHandle');
     $this->post('/sendcode', 'App\Controllers\AuthController:sendVerifyEmail');
     $this->get('/logout', 'App\Controllers\AuthController:logout');
 })->add(new Guest());
