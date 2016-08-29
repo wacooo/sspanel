@@ -31,7 +31,7 @@ $app->add(new WhoopsMiddleware);
 
 
 // Home
-$app->get('/', 'App\Controllers\HomeController:home');
+$app->get('/', 'App\Controllers\HomeController:upgrade');
 $app->get('/code', 'App\Controllers\HomeController:code');
 $app->get('/tos', 'App\Controllers\HomeController:tos');
 $app->get('/debug', 'App\Controllers\HomeController:debug');
@@ -39,7 +39,7 @@ $app->post('/debug', 'App\Controllers\HomeController:postDebug');
 $app->get('/download', 'App\Controllers\HomeController:download');
 $app->get('/pay', 'App\Controllers\HomeController:pay');
 
-$app->get('/index', 'App\Controllers\HomeController:index');
+// $app->get('/index', 'App\Controllers\HomeController:index');
 
 // User Center
 $app->group('/user', function () {
@@ -64,10 +64,11 @@ $app->group('/user', function () {
 
 // Auth
 $app->group('/auth', function () {
-    $this->get('/login', 'App\Controllers\AuthController:login');
+    // $this->get('/login', 'App\Controllers\AuthController:login');
+	$this->get('/login', 'App\Controllers\AuthController:internallogin');
     $this->post('/login', 'App\Controllers\AuthController:loginHandle');
-    $this->get('/register', 'App\Controllers\AuthController:register');
-    $this->post('/register', 'App\Controllers\AuthController:registerHandle');
+    // $this->get('/register', 'App\Controllers\AuthController:register');
+    // $this->post('/register', 'App\Controllers\AuthController:registerHandle');
     $this->post('/sendcode', 'App\Controllers\AuthController:sendVerifyEmail');
     $this->get('/logout', 'App\Controllers\AuthController:logout');
 })->add(new Guest());

@@ -40,6 +40,11 @@ class AuthController extends BaseController
     {
         return $this->view()->display('auth/login.tpl');
     }
+    
+    public function internallogin($request, $response, $args)
+    {
+    	return $this->view()->display('auth/internallogin.tpl');
+    }    
 
     public function loginHandle($request, $response, $args)
     {

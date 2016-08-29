@@ -72,10 +72,16 @@ class HomeController extends BaseController
         return $this->view()->assign('homeIndexMsg', $homeIndexMsg)->display('download.tpl');
     }
     
+    public function upgrade()
+    {
+          return $this->view()->display('secret/upgrade.tpl');
+    }
+    
     public function home()
     {
-          return $this->view()->display('home.tpl');
+    	return $this->view()->display('home.tpl');
     }
+    
 
     public function pay($request, $response, $args){
     	$pid = $request->getParam('pid');
