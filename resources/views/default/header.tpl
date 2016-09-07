@@ -13,8 +13,6 @@
 <link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
 <!-- Custom Fonts -->
 <link href="http://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-<link href="http://fonts.useso.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"/>
-<link href="http://fonts.useso.com/css?family=Open+Sans:400,300,800italic,700italic,600italic,400italic,300italic,800,700,600" rel="stylesheet" type="text/css"/>
 <!-- Animate-->
 <link href="http://cdn.bootcss.com/animate.css/3.5.2/animate.css" rel="stylesheet">
 
