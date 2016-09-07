@@ -72,8 +72,8 @@ class Package extends Model
 		if ($interval == NULL) {
 			return "--";
 		}
-		$month = round($interval / 3600 / 24 / 31);
-		return "".$month."个月";
+		$month = round($interval / 3600 / 24);
+		return "".$month."天";
 	}
 	
 	public function getTimeStr($time) {

@@ -181,9 +181,10 @@ class AuthController extends BaseController
         if ($user->save()) {
         	
         	$amount = Tools::toMB(Config::get('defaultTraffic'));
+        	$resetInterval = Config::get('defaultResetInterval')*3600;
         	$duration = Config::get('defaultDuration')*3600;
         	$startTime = time();
-        	$p = VpnPackage::createNewPackage($user->id, $amount, $duration, $startTime, $startTime + $duration, true);
+        	$p = VpnPackage::createNewPackage($user->id, $amount, $resetInterval, $startTime, $startTime + $duration, true);
         	
             $res['ret'] = 1;
             $res['msg'] = "注册成功";

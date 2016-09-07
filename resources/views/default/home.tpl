@@ -106,7 +106,7 @@
 	<section class="main-section team" id="team"><!--main-section team-start-->
 		<div class="container">
 	        <h2>套餐选购</h2>
-	        <h6>新注册可以免费使用1G流量，欢迎选购适合您的套餐</h6>
+	        <h6>新注册每天可以免费试用，欢迎选购适合您的套餐</h6>
 	        <div class="team-leader-block clearfix">
 	        	<form id="pt1" action="/order/buy" method="post" onclick="submit();">
 	        	<input name="amount" type="text" hidden="hidden" value="15" />
