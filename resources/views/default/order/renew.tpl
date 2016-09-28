@@ -19,10 +19,7 @@
 									<div class="price-unit">元</div>
 									<div class="price-box">
 										<div class="price-content">
-											<span class="number number-t"></span> <span
-												class="number number-t"></span> <span
-												class="number number-t"></span> <span
-												class="number number-0"></span> <span
+											 <span class="number number-0"></span> <span
 												class="number number-d"></span> <span
 												class="number number-0"></span>
 										</div>
