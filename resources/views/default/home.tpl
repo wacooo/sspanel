@@ -3,7 +3,7 @@
 	<section class="main-section" id="service">
 		<div class="container">
 	    	<h2>使用场景</h2>
-	    	<h6>轻松科学上网 保护个人隐私</h6>
+	    	<h6>您可能有这些需求：</h6>
 	        <div class="row">
 	        	<div class="col-lg-4 col-sm-6 wow fadeInLeft delay-05s">
 	            	<div class="service-list">
@@ -11,8 +11,8 @@
 	                    	<i class="fa-rocket"></i>
 	                    </div>
 	                	<div class="service-list-col2">
-	                        <h3>智能加速</h3>
-	                        <p>现在，不必再担心连上VPN后访问国内网站速度下降，聪明的长颈兔知道哪些网站它该加速。</p>
+	                        <h3>智能</h3>
+	                        <p>现在，聪明的长颈兔知道哪些时候它该工作。</p>
 	                    </div>
 	                </div>
 
@@ -22,7 +22,7 @@
 	                    </div>
 	                	<div class="service-list-col2">
 	                        <h3>跨国追剧</h3>
-	                        <p>视频达人的福利来了，现支持加速访问主流的国外视频网站。跨国追剧、追综艺、追娱乐节目从未如此容易。</p>
+	                        <p>视频达人的福利来了。追剧、追综艺、追娱乐节目从未如此容易。</p>
 	                    </div>
 	                </div>
 	                <div class="service-list">
@@ -31,7 +31,7 @@
 	                    </div>
 	                	<div class="service-list-col2">
 	                        <h3>社交</h3>
-	                        <p>跨国界的沟通，你有喜欢的球星么，你有爱好的设计师么，现在你可以快速、无障碍去关注他们的个人动态。</p>
+	                        <p>你有喜欢的球星么，你有爱好的设计师么，现在你可以快速、无障碍去关注他们的个人动态。</p>
 	                    </div>
 	                </div>
 	                <div class="service-list">
@@ -49,7 +49,7 @@
 	                    </div>
 	                    <div class="service-list-col2">
 	                        <h3>外贸</h3>
-	                        <p>国际邮箱又连不上？用了长颈兔，这都不再是问题。给你的生意加把火吧。</p>
+	                        <p>国际邮箱访问慢？用了长颈兔，这都不再是问题。给你的生意加把火吧。</p>
 	                    </div>
 	                </div>
 	            </div>
@@ -69,7 +69,7 @@
 	            </figure>
 	        	<div class="col-lg-7 col-sm-8 featured-work">
 	            	<h2>优势特点</h2>
-	            	<P class="padding-b">轻松科学上网 保护个人隐私</P>
+	            	<P class="padding-b">简单、方便、贴心</P>
 	            	<div class="featured-box">
 	                	<div class="featured-box-col1 wow fadeInRight delay-02s">
 	                    	<i class="fa-magic"></i>
@@ -94,7 +94,7 @@
 	                    </div>	
 	                	<div class="featured-box-col2 wow fadeInRight delay-06s">
 	                        <h3>最全面</h3>
-	                        <p>全面支持Windows、MAC、Linux、手机安卓、手机苹果等主流操作系统，同时支持路由器(OpenWRT)使用。管理容易，使用方便。</p>
+	                        <p>全面支持Windows、MAC、Linux、手机安卓、手机苹果等主流操作系统，管理容易，使用方便。</p>
 	                    </div>    
 	                </div>
 	                <a class="Learn-More" href="#">Learn More</a>

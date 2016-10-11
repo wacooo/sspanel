@@ -36,7 +36,9 @@
 		<div class="container">
 	        <ul class="main-nav">
 	            <li><a href="/#team">购买</a></li>
+	            {if $user->isLogin}
 	            <li><a href="/wiki/index.php">教程/下载</a></li>
+	            {/if}
 	            <li class="small-logo"><a href="/"><img src="/assets/public/img/small-logo.png" alt=""></a></li>
 	            {if $user->isLogin}
 	                <li><a href="/user">用户中心</a></li>
